@@ -1,0 +1,109 @@
+{
+  "Project": {
+    "Room": [{
+      "name": "Obytná sekce",
+      "description": "Jsi v obytné sekci. Místnost je větší a útulná. Kolem tebe se nachází několik spacích kryobuňek. Každá má vedle sebe malí noční stolek s židlí.",
+      "around":["Řídicí můstek","Komunikační uzel"],
+      "Persons": null,
+      "items":["Klíč od obytné místnosti"]
+    },
+    {
+      "name": "Řídicí můstek",
+      "description": "Nacházíš se na řídicím můstku. Uprostřed místnosti je vyvýšený velín kolem něj počítače pro navigaci, poškození/opravy a několik dalších.",
+      "around": ["Obytná sekce","Sklad a Údržba","Laboratoře"],
+      "Persons": null,
+      "items": null
+    },
+    {
+      "name": "Laboratoře",
+      "description": "Místnost Laboratoří je větší čistější a pořádně vybílená. nachází se zde spoustu přístrojů kterým jsi sama nikdy moc nerozuměla. Před vchodem do jádra pár prázdných věšáků na oblek. ",
+      "around": ["Řídicí můstek","Energetické jádro"],
+      "Persons": "android Lyra",
+      "items": null
+    },
+    {
+      "name": "Energetické jádro",
+      "description": "Energetické jádro je vysoce kontaminovaná místnost. Oblek je nutnost. Uprostřed místnosti je podivný velký box, ze stran jsou nastrkané energetické články.",
+      "around": "Laboratoře",
+      "Persons": null,
+      "items": "energetický článek"
+  },
+    {
+      "name": "Sklad a údržba",
+      "description": "Vstoupil jsi do velké místnosti plné regálů. Nachází se zde několik přenosných vozíků, velké konteinery a spousta dřevěných beden. Také jsi zde zahlédl skladového robota AX-3",
+      "around": [
+        "Řídicí můstek",
+        "Komunikační uzel",
+        "Hangár"
+      ],
+      "Persons": "AX-3",
+      "items": null
+    },
+    {
+      "name": "Komunikační uzel",
+      "description": "Menší místnost plná různých serverů a přístrojů navazujících spojení s okolím. Vypadá to že se zde velmi vyplatí podívat se po místnosti",
+      "around": ["Obytná sekce","Strojovna","Sklad a údržba"],
+      "Persons": null,
+      "items": "1/2 karty do hangaru"
+    }
+     ],
+    "Hangar": {
+      "name": "Hangár",
+      "description": "Hangár je místnost velmi velká je zde několik rozbitých nouzových modulů a jinak nic moc zajímavého",
+      "around": "Sklad a údržba",
+      "Persons": null,
+      "items": null,
+      "ModulAvailable": false
+    },
+    "Item": [{
+      "name": "Klíč od obytné místnosti",
+      "descriptin":"pomocí tohoto klíče otevřeš dveře od obytné místnosti"
+    },
+      {
+        "name": "energetický článek",
+        "description": "Slouží jako pohon pro únikový modul"
+      },
+      {
+        "name": "1/2 karty do hangaru",
+        "description": "Polovina karty pro otevření hangáru"
+      },
+      {
+        "name": "2/2 karty do hangaru",
+        "description": "Polovina karty pro otevření hangáru"
+      },
+      {"name": "karta do hangaru",
+      "description": "máš složenou kartu od hangaru"},
+      {
+        "name": "ochranný oblek",
+        "description": "oblek který použiješ pouze 1x tak dej pozor na co"
+      },
+      {
+        "name": "klíčky od modulu",
+        "description": "můžeš nastartovat modul a uniknout"
+      },
+      {"name": "Datové nosiče",
+      "description": "nosiče s daty o lodi před rozpadem"}
+    ],
+    "robotAX": {
+      "name": "AX-3",
+      "inventory": "1/2 karty do hangaru",
+      "Dialogue": "Ahoj, vítej ve skladu. Ja jsem robot AX-3 a pomáhám zde s úklidem a přesunem velkých konteinerů do hangaru s čím ti mohu pomoci",
+      "Dialogue1": "Polovinu přístupové karty mám ale opravdu si nejsem jistý, zda bych ti je měl dávat. Mohl bych ti položit otázku?",
+      "dialogue1question": "kolik lidí obsahovala posádka této výzkumné lodi do vesmíru",
+      "Count": 8,
+      "Answer": "Tady ti předávám klíč od hangáru nech radši dveře otevřené děkuji. ",
+      "Dialogue2": "Ano všiml jsem si, že loď je ve velmi špatném stavu, snažim se jí opravit ale nejde mi to. Celá posádka je mrtvá, až budeš odlétat mohla by jsi mi říct, myslím že bych se ti později ještě mohl hodit",
+      "Ending": "Děkuji za upozornění hnedka jdu do hangaru at odsud muzeme odletět"
+    },
+    "androidLyra":{
+      "name": "android Lyra",
+      "inventory": "ochranný oblek",
+      "Dialogue": "Zdravím. Jsem Lyra tvůje dobrá společnice a pomocnice při práci v laboratoři s čím ti mohu pomoci",
+      "dialogue1": "Ja si řikala že jsem tě zde ještě neviděla. Funguje to tady úplně jednoduše. Laboratoř je pod mím dozorem plně bezpečným místem. Za dalšími dveřmi je Energetické jádro a tam kvůli radiaci můžeš vstoupit pouze s oblekem.",
+      "dialogue1more": "Oblek tady pro tebe naštěstí mám, ale sama do vedlejší místnosti vstoupit nemohu, tak ti přeji jen hodně štěstí."
+    }
+
+
+
+  }
+}
