@@ -1,6 +1,6 @@
 public class GameEngine {
     private boolean playing;
-    private String actualRoom;
+
     private String mainTask;
 
     public void start(){}

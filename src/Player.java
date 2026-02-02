@@ -3,4 +3,10 @@ import java.util.ArrayList;
 public class Player {
     ArrayList<Item>inventory = new ArrayList<>();
     private String name;
+    private String actualRoom;
+    private int Time;
+
+    public int getTime() {
+        return Time;
+    }
 }

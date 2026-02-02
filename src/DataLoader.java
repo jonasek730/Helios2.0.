@@ -10,13 +10,13 @@ import java.util.List;
 public class DataLoader {
     ObjectMapper parser;
 
-    public void loadRoomsData(){
+    public List<Room> loadRoomsData(){
         parser = new ObjectMapper();
 
         try {
             InputStream input = new FileInputStream("/Data.json");
             List<Room> rooms = parser.readValue(input, new TypeReference<List<Room>>() {});
-
+            return rooms;
         } catch (FileNotFoundException e) {
             throw new RuntimeException("file was not found");
         } catch (Exception e) {
