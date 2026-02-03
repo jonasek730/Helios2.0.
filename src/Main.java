@@ -2,6 +2,7 @@ import Class.*;
 public class Main {
     public static void main(String[] args) {
      GameEngine g = new GameEngine();
-     g.introduction();
+     UserInterface u =new UserInterface();
+     u.start(g);
     }
 }
