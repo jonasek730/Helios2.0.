@@ -1,5 +1,5 @@
-import Commands.Command;
-
+package Commands;
+import Class.*;
 public class InventoryCommand implements Command {
 private Player player;
 public InventoryCommand(Player player){
@@ -7,7 +7,7 @@ public InventoryCommand(Player player){
 }
     public String execute(String command) {
 
-        return "Hráč má u sebe"+player.inventory;
+        return "Hráč má u sebe"+ player.getInventory();
     }
 
     public boolean exit() {

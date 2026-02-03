@@ -1,5 +1,5 @@
-import Commands.Command;
-
+package Commands;
+import Class.*;
 public class DiscoverCommand implements Command {
     private Room room;
 
@@ -9,7 +9,7 @@ public class DiscoverCommand implements Command {
 
     public String execute(String command) {
         System.out.println("V této místnosti se nachází");
-        System.out.println(room.items);
+        System.out.println(room.getItems());
         return "";
     }
 

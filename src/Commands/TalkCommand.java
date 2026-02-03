@@ -1,5 +1,5 @@
-import Commands.Command;
-
+package Commands;
+import Class.*;
 public class TalkCommand implements Command {
 private Player player;
     public TalkCommand(Player player){

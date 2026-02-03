@@ -5,28 +5,32 @@
       "description": "Jsi v obytné sekci. Místnost je větší a útulná. Kolem tebe se nachází několik spacích kryobuňek. Každá má vedle sebe malí noční stolek s židlí.",
       "around":["Řídicí můstek","Komunikační uzel"],
       "Persons": null,
-      "items":["Klíč od obytné místnosti"]
+      "items":["Klíč od obytné místnosti"],
+      "isAvailable": true
     },
     {
       "name": "Řídicí můstek",
       "description": "Nacházíš se na řídicím můstku. Uprostřed místnosti je vyvýšený velín kolem něj počítače pro navigaci, poškození/opravy a několik dalších.",
       "around": ["Obytná sekce","Sklad a Údržba","Laboratoře"],
       "Persons": null,
-      "items": null
+      "items": null,
+      "isAvailable": false
     },
     {
       "name": "Laboratoře",
       "description": "Místnost Laboratoří je větší čistější a pořádně vybílená. nachází se zde spoustu přístrojů kterým jsi sama nikdy moc nerozuměla. Před vchodem do jádra pár prázdných věšáků na oblek. ",
       "around": ["Řídicí můstek","Energetické jádro"],
       "Persons": "android Lyra",
-      "items": null
+      "items": null,
+      "isAvailable": false
     },
     {
       "name": "Energetické jádro",
       "description": "Energetické jádro je vysoce kontaminovaná místnost. Oblek je nutnost. Uprostřed místnosti je podivný velký box, ze stran jsou nastrkané energetické články.",
       "around": "Laboratoře",
       "Persons": null,
-      "items": "energetický článek"
+      "items": "energetický článek",
+      "isAvailable": false
   },
     {
       "name": "Sklad a údržba",
@@ -37,14 +41,16 @@
         "Hangár"
       ],
       "Persons": "AX-3",
-      "items": null
+      "items": null,
+      "isAvailable": false
     },
     {
       "name": "Komunikační uzel",
       "description": "Menší místnost plná různých serverů a přístrojů navazujících spojení s okolím. Vypadá to že se zde velmi vyplatí podívat se po místnosti",
       "around": ["Obytná sekce","Strojovna","Sklad a údržba"],
       "Persons": null,
-      "items": "1/2 karty do hangaru"
+      "items": "1/2 karty do hangaru",
+      "isAvailable": false
     }
      ],
     "Hangar": {
@@ -53,7 +59,8 @@
       "around": "Sklad a údržba",
       "Persons": null,
       "items": null,
-      "ModulAvailable": false
+      "ModulAvailable": false,
+      "isAvailable": false
     },
     "Item": [{
       "name": "Klíč od obytné místnosti",

@@ -1,3 +1,5 @@
+package Class;
+
 import java.util.ArrayList;
 
 public class Room {
@@ -7,7 +9,7 @@ public class Room {
     private robotAX Persons;
     ArrayList<Item>items;
     public void describe(){}
-    private String isAvailable;
+    private boolean isAvailable;
 
     public Room() {
     }
@@ -36,11 +38,11 @@ public class Room {
         Persons = persons;
     }
 
-    public String getIsAvailable() {
+    public boolean getIsAvailable() {
         return isAvailable;
     }
 
-    public void setIsAvailable(String isAvailable) {
+    public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
 

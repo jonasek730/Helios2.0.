@@ -1,5 +1,5 @@
-import Commands.Command;
-
+package Commands;
+import Class.*;
 public class TimeCommand implements Command {
 private Player player;
     public TimeCommand(Player player){

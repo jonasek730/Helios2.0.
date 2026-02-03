@@ -1,4 +1,6 @@
-public class robotAX extends Player{
+package Class;
+
+public class robotAX extends Player {
 private String Dialogue;
 private String Dialogue1;
 private String dialogue1question;

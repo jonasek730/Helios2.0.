@@ -1,7 +1,8 @@
-import Commands.Command;
-
+package Commands;
+import Class.*;
 public class PickCommand implements Command {
 private Player player ;
+
     public PickCommand(Player player){
         this.player=player;}
 
