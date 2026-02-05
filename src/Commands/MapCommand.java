@@ -5,12 +5,10 @@ private Room room;
     public MapCommand(Room room) {
         this.room = room;
     }
-    public String execute(String command) {
+    public String execute(String argument) {
 
         return "Místnosti kolem tebe jsou:"+room.getAround();
     }
 
-    public boolean exit() {
-        return false;
-    }
+
 }

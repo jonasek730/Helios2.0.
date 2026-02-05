@@ -49,7 +49,6 @@ public class Room {
     public ArrayList<Room> getAround() {
         return around;
     }
-
     public void setAround(ArrayList<Room> around) {
         this.around = around;
     }
@@ -61,4 +60,6 @@ public class Room {
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
+
+
 }

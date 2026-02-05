@@ -5,12 +5,10 @@ private Player player;
     public TalkCommand(Player player){
         this.player=player;}
 
-    public String execute(String command) {
+    public String execute(String argument) {
         player.mluv();
         return "";
     }
 
-    public boolean exit() {
-        return false;
-    }
+
 }

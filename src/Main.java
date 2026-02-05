@@ -1,8 +1,11 @@
 import Class.*;
 public class Main {
     public static void main(String[] args) {
-     GameEngine g = new GameEngine();
-     UserInterface u =new UserInterface();
-     u.start(g);
+        Player p =new Player();
+        Room r = new Room();
+        GameEngine g = new GameEngine(p,r);
+        g.start();
+
+
     }
 }

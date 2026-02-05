@@ -1,19 +1,16 @@
 package Commands;
 import Class.*;
 public class DiscoverCommand implements Command {
-    private Room room;
+    private Player player;
 
-    public DiscoverCommand(Room room) {
-        this.room = room;
+    public DiscoverCommand(Player player) {
+        this.player=player;
     }
 
-    public String execute(String command) {
-        System.out.println("V této místnosti se nachází");
-        System.out.println(room.getItems());
-        return "";
+    public String execute(String argument) {
+
+        return player.getActualRoom().getItems().toString() ;
     }
 
-    public boolean exit() {
-        return false;
-    }
+
 }

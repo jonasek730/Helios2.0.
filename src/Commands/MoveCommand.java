@@ -7,11 +7,17 @@ private Player player;
         this.player = player;
     }
 
-    public String execute(String command) {
-        return "";
-    }
 
-    public boolean exit() {
-        return false;
+    public String execute(String argument) {
+        if (argument.isEmpty()) {
+
+            return "Kam mam jit?";
+        }else {
+        if (player.RoomisAround(player.getActualRoom().getName())&& player.getActualRoom().getIsAvailable() ){
+        player.setActualRoom(argument);
+        return "Hráč se posunul do požadované místnosti.";
+        }
+        return "Místnost neexistuje.";
+        }
     }
 }

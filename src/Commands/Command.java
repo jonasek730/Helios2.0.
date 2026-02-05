@@ -1,6 +1,5 @@
 package Commands;
 
 public interface Command {
-String execute (String command);
-boolean exit();
+String execute (String argument);
 }
