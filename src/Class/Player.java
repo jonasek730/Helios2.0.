@@ -17,8 +17,16 @@ public class Player {
         return inventory;
     }
 
-    public void setInventory(ArrayList<Item> inventory) {
-        this.inventory = inventory;
+    public String addInventory(Item item) {
+        if(inventory.size()>3){
+            inventory.add(item);
+            return "Prvek byl sebrán.";
+        }else{
+            return "Tvůj inventář je plný.";
+        }
+    }
+    public void checkInventory(){
+        if(inventory.contains("1/2 karty do hangaru"))
     }
 
     public String getName() {
