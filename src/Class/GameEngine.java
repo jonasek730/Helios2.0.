@@ -10,6 +10,7 @@ public class GameEngine {
 
    public void start(){
        UserInterface.introduction();
+
    }
     public String isWin(){return "Vyhrál jsi";}
 

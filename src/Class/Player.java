@@ -26,7 +26,10 @@ public class Player {
         }
     }
     public void checkInventory(){
-        if(inventory.contains("1/2 karty do hangaru"))
+        if(inventory.contains("1/2 karty do hangaru")&& inventory.contains("2/2 karty do hangaru")){
+            inventory.clear();
+            inventory.add(new Item("karta od hangaru","Klíč od dveří hangáru"));
+        }
     }
 
     public String getName() {
