@@ -7,11 +7,16 @@ public class Player {
     private String name;
     private Room actualRoom;
     private int Time;
+    private String mainTask;
 
     public int getTime() {
         return Time;
     }
-    public void mluv(){}
+    public void mluv(androidLyra lyra){
+
+
+
+    }
 
     public ArrayList<Item> getInventory() {
         return inventory;
@@ -19,18 +24,15 @@ public class Player {
 
     public String addInventory(Item item) {
         if(inventory.size()>3){
+            return "Tvůj inventář je plný.";
+        }else{
             inventory.add(item);
             return "Prvek byl sebrán.";
-        }else{
-            return "Tvůj inventář je plný.";
+
         }
     }
-    public void checkInventory(){
-        if(inventory.contains("1/2 karty do hangaru")&& inventory.contains("2/2 karty do hangaru")){
-            inventory.clear();
-            inventory.add(new Item("karta od hangaru","Klíč od dveří hangáru"));
-        }
-    }
+
+
 
     public String getName() {
         return name;
@@ -44,13 +46,17 @@ public class Player {
         return actualRoom;
     }
 
-    public void setActualRoom(String room) {
-        for (int i = 0; i <getActualRoom().getAround().size() ; i++) {
-            if (getActualRoom().around.get(i).equals(room)){
-                actualRoom=getActualRoom().around.get(i);
+    public void moveToRoom(String roomName) {
+        for (Room room : actualRoom.getAround()) {
+            if (room.getName().equalsIgnoreCase(roomName)) {
+                actualRoom = room;
             }
         }
     }
+    public void setActualRoom(Room actualRoom) {
+        this.actualRoom = actualRoom;
+    }
+
 
     public void setTime(int time) {
         Time = time;
@@ -67,4 +73,31 @@ public class Player {
         }
         return false;
     }
+
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
+    }
+
+    public String getMainTask() {
+        return mainTask;
+    }
+
+    public void setMainTask(String mainTask) {
+        this.mainTask = mainTask;
+    }
+    public boolean hasItem(String name) {
+        for (Item item : inventory) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void checkInventory() {
+        if (hasItem("1/2 karty do hangaru") && hasItem("2/2 karty do hangaru")) {
+            inventory.clear();
+            inventory.add(new Item("karta od hangaru", "Klíč od dveří hangáru"));
+        }
+    }
+
 }

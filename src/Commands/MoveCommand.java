@@ -14,7 +14,7 @@ private Player player;
             return "Kam mam jit?";
         }else {
         if (player.RoomisAround(player.getActualRoom().getName())&& player.getActualRoom().getIsAvailable() ){
-        player.setActualRoom(argument);
+        player.moveToRoom(argument);
         return "Hráč se posunul do požadované místnosti.";
         }
         return "Místnost neexistuje.";

@@ -1,4 +1,4 @@
-package Class;
+    package Class;
 import Commands.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 public class GameEngine {
     private boolean playing;
 
-    private String mainTask;
+
 
    public void start(){
        UserInterface.introduction();
@@ -27,24 +27,19 @@ public class GameEngine {
     commands.put("mapa",new MapCommand(r));
     commands.put("uloz",new SaveCommand());
     }
-    public void Instructions(String input){
-        String[] parts = input.split(" ", 2);
+    public void instructions(String input){
+            String[] parts = input.trim().split(" ", 2);
 
-        if (parts.length < 2) {
-            System.out.println("Zadej prikaz i parametr!");
-        } else {
             String commandName = parts[0];
-            String argument = parts[1];
+            String argument = (parts.length > 1) ? parts[1] : "";
 
             Command command = commands.get(commandName);
 
             if (command == null) {
-                System.out.println("Neznamy prikaz!");
+                System.out.println("Neznámý příkaz!");
                 return;
             }
 
             command.execute(argument);
         }
-
-    }
 }
