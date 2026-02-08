@@ -12,10 +12,11 @@ public class Player {
     public int getTime() {
         return Time;
     }
-    public void mluv(androidLyra lyra){
 
-
-
+    public Player(String name, Room actualRoom, int time) {
+        this.name = name;
+        this.actualRoom = actualRoom;
+        Time = time;
     }
 
     public ArrayList<Item> getInventory() {

@@ -1,17 +1,24 @@
 package Class;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Room {
     private String name;
     private String description;
-    ArrayList<Room>around= new ArrayList<Room>();
-    private robotAX Persons;
-    ArrayList<Item>items;
-    public void describe(){}
+    private List<String> persons;
+    private List<String> items;
     private boolean isAvailable;
 
-    public Room() {
+    private List<String> aroundNames;
+    private List<Room> around = new ArrayList<>();
+
+    public List<String> getAroundNames() {
+        return aroundNames;
+    }
+
+    public void setAroundNames(List<String> aroundNames) {
+        this.aroundNames = aroundNames;
     }
 
     public String getName() {
@@ -30,36 +37,35 @@ public class Room {
         this.description = description;
     }
 
-    public robotAX getPersons() {
-        return Persons;
-    }
-
-    public void setPersons(robotAX persons) {
-        Persons = persons;
-    }
-
-    public boolean getIsAvailable() {
-        return isAvailable;
-    }
-
-    public void setIsAvailable(boolean isAvailable) {
-        this.isAvailable = isAvailable;
-    }
-
-    public ArrayList<Room> getAround() {
+    public List<Room> getAround() {
         return around;
     }
-    public void setAround(ArrayList<Room> around) {
+
+    public void setAround(List<Room> around) {
         this.around = around;
     }
 
-    public ArrayList<Item> getItems() {
+    public List<String> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<String> persons) {
+        this.persons = persons;
+    }
+
+    public List<String> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<Item> items) {
+    public void setItems(List<String> items) {
         this.items = items;
     }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
 
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 }
