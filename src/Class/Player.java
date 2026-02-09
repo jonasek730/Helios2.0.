@@ -1,9 +1,10 @@
 package Class;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
-    ArrayList<Item>inventory = new ArrayList<>();
+    List<Item> inventory = new ArrayList<>();
     private String name;
     private Room actualRoom;
     private int Time;
@@ -18,8 +19,9 @@ public class Player {
         this.actualRoom = actualRoom;
         Time = time;
     }
+    public Player(){}
 
-    public ArrayList<Item> getInventory() {
+    public List<Item> getInventory() {
         return inventory;
     }
 
@@ -67,7 +69,7 @@ public class Player {
 
     public boolean RoomisAround(String room){
         for (int i = 0; i < getActualRoom().getAround().size(); i++) {
-           if(getActualRoom().around.get(i).equals(room)){
+           if(getActualRoom().getAround().get(i).equals(room)){
                return true;
            }
 

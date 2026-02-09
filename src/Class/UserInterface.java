@@ -21,7 +21,7 @@ public class UserInterface {
             System.out.println( "Vítej ve hře Helios od tvůrce Jonáše.\n Tvým cílem je uniknout z rozpadající lodi pomocí modulu před kompletní destrukcí.\n Loď se pomalu rozpadá a nemáš moc času každý pohyb ti vyplýtvá trochu času, proto se musíš rozhodovat správně.\n Hodně štěstí.\n\n");
         }
         Scanner src = new Scanner(System.in);
-        public void dialogueLyra(androidLyra lyra,Player player, Item item){
+        public String dialogueLyra(androidLyra lyra, Player player, Item item){
             lyra.getDialogue();
             try {
             System.out.println("Možnosti:\n 1. Zjistit podrobnosti o místnosti \n 2. Odejít");
@@ -40,14 +40,14 @@ public class UserInterface {
                                 System.out.println("Dostal jsi ochranný oblek");
                                 break;
                             case "2":
-                                return;
+                                return choice;
                             default:
                                 System.out.println("Neznámý příkaz.");
-                                return;
+                                return choice;
                         }
                         break;
                     case "2":
-                        return;
+                        return choice;
                     default:
                         System.out.println("Neznámý příkaz.");
                 }
@@ -55,6 +55,7 @@ public class UserInterface {
                 throw new RuntimeException(e);
             }
 
+            return null;
         }
 
 }

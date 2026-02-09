@@ -20,6 +20,7 @@ import java.util.Scanner;
        DataLoader dl =new DataLoader();
        dl.linkRooms(rooms);
        Player player = new Player("hrac",rooms.get(0),100);
+       initCommands(player, rooms.get(0), new UserInterface(), loader);
        Scanner scr = new Scanner(System.in);
        boolean running = true;
 
@@ -27,7 +28,7 @@ import java.util.Scanner;
 
            System.out.println("\nAktuální místnost: " + player.getActualRoom().getName());
            System.out.println("Popis: " + player.getActualRoom().getDescription());
-           System.out.print("> "); // prompt
+           System.out.print("> ");
 
            String input = scr.nextLine();
 
@@ -40,10 +41,7 @@ import java.util.Scanner;
            }
 
 
-           if (player.getInventory().stream().anyMatch(i -> i.getName().equals("klíčky od modulu"))) {
-               System.out.println("Gratulace! Vyhrál jsi hru.");
-               running = false;
-           }
+
 
 
            if (player.getTime() <= 0) {
@@ -57,17 +55,21 @@ import java.util.Scanner;
 
 
     private Map<String, Command> commands = new HashMap<>();
-    public GameEngine(Player p,Room r){
-    commands.put("jdi",new MoveCommand(p));
-    commands.put("hledej",new DiscoverCommand(p));
-    commands.put("mluv",new TalkCommand());
-    commands.put("cas",new TimeCommand(p));
-    commands.put("napoveda",new HintCommand());
-    commands.put("inventar",new InventoryCommand(p));
-    commands.put("mapa",new MapCommand(r));
-    commands.put("uloz",new SaveCommand());
+    public GameEngine(){
+
     }
-    public void instructions(String input){
+    private void initCommands(Player p, Room r,UserInterface ui,DataLoader dl) {
+        commands.put("jdi", new MoveCommand(p));
+        commands.put("hledej", new DiscoverCommand(p));
+        commands.put("mluv", new TalkCommand(ui,dl,p));
+        commands.put("cas", new TimeCommand(p));
+        commands.put("napoveda", new HintCommand());
+        commands.put("inventar", new InventoryCommand(p));
+        commands.put("mapa", new MapCommand(r));
+        commands.put("uloz", new SaveCommand());
+    }
+
+        public void instructions(String input){
             String[] parts = input.trim().split(" ", 2);
 
             String commandName = parts[0];

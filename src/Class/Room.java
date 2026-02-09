@@ -7,7 +7,7 @@ public class Room {
     private String name;
     private String description;
     private List<String> persons;
-    private List<String> items;
+    private List<Item> items;
     private boolean isAvailable;
 
     private List<String> aroundNames;
@@ -53,11 +53,11 @@ public class Room {
         this.persons = persons;
     }
 
-    public List<String> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
-    public void setItems(List<String> items) {
+    public void setItems(List<Item> items) {
         this.items = items;
     }
 

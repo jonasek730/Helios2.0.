@@ -13,7 +13,7 @@ private Player player;
 
             return "Kam mam jit?";
         }else {
-        if (player.RoomisAround(player.getActualRoom().getName())&& player.getActualRoom().getIsAvailable() ){
+        if (player.RoomisAround(player.getActualRoom().getName())&& player.getActualRoom().isAvailable() ){
         player.moveToRoom(argument);
         return "Hráč se posunul do požadované místnosti.";
         }

@@ -8,4 +8,5 @@ private int Count;
 private String Answer;
 private String Dialogue2;
 private String Ending;
+
 }

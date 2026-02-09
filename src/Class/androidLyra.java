@@ -1,12 +1,25 @@
 package Class;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class androidLyra extends Player {
     private String Dialogue;
     private String dialogue1;
     private String dialogue1more;
+    private List<Item>inventory;
 
     public String getDialogue() {
         return Dialogue;
+    }
+
+    @Override
+    public List<Item> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(List<Item> inventory) {
+        this.inventory = inventory;
     }
 
     public void setDialogue(String dialogue) {
