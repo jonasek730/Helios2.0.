@@ -37,8 +37,13 @@ public class DataLoader {
 
 
     public InputStream openDataFile() throws IOException {
+        InputStream resourceStream = DataLoader.class.getClassLoader().getResourceAsStream("Data.json");
+        if (resourceStream != null) {
+            return resourceStream;
+        }
+
         try {
-            return new FileInputStream("src/Data.json");
+            return new FileInputStream("src/resources/Data.json");
         } catch (IOException ignored) {
             return new FileInputStream("Data.json");
         }
