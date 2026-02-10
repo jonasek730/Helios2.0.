@@ -12,16 +12,18 @@ private Player player;
     }
 
     public String execute(String argument) {
-        if("lyra".equalsIgnoreCase(argument)) {
-            androidLyra lyra = dataloader.loadAndroidLyra();
-            if (lyra.getInventory().isEmpty()) {
-                return "Lyra teď nemá žádný předmět.";
-            }
-            return rozhrani.dialogueLyra(lyra, player, lyra.getInventory().get(0));
+        androidLyra lyra = dataloader.loadAndroidLyra();
+        if (lyra.getInventory().isEmpty()) {
+            return "Lyra teď nemá žádný předmět.";
         }
+        Item reward = lyra.getInventory().get(0);
+        String result = rozhrani.dialogueLyra(lyra, player, reward);
+        if (result == null) {
+            return "Konverzace ukončena.";
+        }
+        return "Konverzace ukončena.";
+    }
 
-        return "S kým chceš mluvit.";
 
 
-}
 }

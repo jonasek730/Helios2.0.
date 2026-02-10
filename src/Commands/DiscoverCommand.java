@@ -1,5 +1,9 @@
 package Commands;
 import Class.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DiscoverCommand implements Command {
     private Player player;
 
@@ -8,11 +12,24 @@ public class DiscoverCommand implements Command {
     }
 
     public String execute(String argument) {
-        for (int i = 0; i <player.getActualRoom().getItems().size() ; i++) {
-            player.addInventory(player.getActualRoom().getItems().get(i));
+        List<Item> roomItems = player.getActualRoom().getItems();
+        if (roomItems.isEmpty()) {
+            return "V místnosti nic není.";
         }
-        return player.getActualRoom().getItems().toString();
+        List<String> picked = new ArrayList<>();
+        List<Item> snapshot = new ArrayList<>(roomItems);
+
+        for (Item item : snapshot) {
+            String result = player.addInventory(item);
+            if ("Prvek byl sebrán.".equals(result)) {
+                picked.add(item.getName());
+                roomItems.remove(item);
+            } else {
+                return result;
+            }
+        }
+
+        return "Našel jsi: " + String.join(", ", picked);
     }
-
-
 }
+

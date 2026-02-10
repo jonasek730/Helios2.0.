@@ -57,5 +57,8 @@ public class UserInterface {
 
             return null;
         }
+        public static void helpInfo(){
+            System.out.println("Pro krátký soupis dostupných příkazů napiš: napoveda");
+        }
 
 }

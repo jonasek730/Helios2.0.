@@ -3,10 +3,7 @@ package Class;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.FileInputStream;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -37,16 +34,16 @@ public class DataLoader {
 
 
     public InputStream openDataFile() throws IOException {
-        InputStream resourceStream = DataLoader.class.getClassLoader().getResourceAsStream("Data.json");
-        if (resourceStream != null) {
-            return resourceStream;
-        }
-
         try {
             return new FileInputStream("src/resources/Data.json");
-        } catch (IOException ignored) {
-            return new FileInputStream("Data.json");
+        } catch (IOException ignoredResourcesPath) {
+            try {
+                return new FileInputStream("src/Data.json");
+            } catch (IOException ignoredLegacyPath) {
+                return new FileInputStream("Data.json");
+            }
         }
+
     }
 
     public Map<String, Item> loadItemMap(JsonNode project) {

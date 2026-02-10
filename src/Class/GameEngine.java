@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import static Class.UserInterface.helpInfo;
+
     public class GameEngine {
     private boolean playing;
 
@@ -14,18 +16,16 @@ import java.util.Scanner;
        UserInterface.introduction();
        DataLoader loader = new DataLoader();
        List<Room> rooms = loader.loadRoomsData();
-       List<Item> items = loader.loadItemData();
-       androidLyra lyra = loader.loadAndroidLyra();
-       robotAX ax = loader.loadRobotAX();
        DataLoader dl =new DataLoader();
        dl.linkRooms(rooms);
        Player player = new Player("hrac",rooms.get(0),100);
-       initCommands(player, rooms.get(0), new UserInterface(), loader);
+       initCommands(player,new UserInterface(), loader);
        Scanner scr = new Scanner(System.in);
        boolean running = true;
 
-       while (running) {
 
+       while (running) {
+           helpInfo();
            System.out.println("\nAktuální místnost: " + player.getActualRoom().getName());
            System.out.println("Popis: " + player.getActualRoom().getDescription());
            System.out.print("> ");
@@ -58,14 +58,14 @@ import java.util.Scanner;
     public GameEngine(){
 
     }
-    private void initCommands(Player p, Room r,UserInterface ui,DataLoader dl) {
+    private void initCommands(Player p,UserInterface ui,DataLoader dl) {
         commands.put("jdi", new MoveCommand(p));
         commands.put("hledej", new DiscoverCommand(p));
         commands.put("mluv", new TalkCommand(ui,dl,p));
         commands.put("cas", new TimeCommand(p));
         commands.put("napoveda", new HintCommand());
         commands.put("inventar", new InventoryCommand(p));
-        commands.put("mapa", new MapCommand(r));
+        commands.put("mapa", new MapCommand(p));
         commands.put("uloz", new SaveCommand());
     }
 
@@ -82,7 +82,11 @@ import java.util.Scanner;
                 return;
             }
 
-            command.execute(argument);
+            String result = command.execute(argument);
+            if (result != null && !result.isBlank()) {
+                System.out.println(result);
+            }
+
         }
 
 

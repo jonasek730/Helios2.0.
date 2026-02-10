@@ -9,15 +9,16 @@ private Player player;
 
 
     public String execute(String argument) {
-        if (argument.isEmpty()) {
+        if (argument == null || argument.isBlank()) {
+            return "Kam mám jít?";
+        }
+        if (!player.RoomisAround(argument)) {
+            return "Tím směrem to nejde.";
+        }
 
-            return "Kam mam jit?";
-        }else {
-        if (player.RoomisAround(player.getActualRoom().getName())&& player.getActualRoom().isAvailable() ){
         player.moveToRoom(argument);
-        return "Hráč se posunul do požadované místnosti.";
-        }
-        return "Místnost neexistuje.";
-        }
+        player.consumeTime(1);
+        return "Přesunul ses do místnosti: " + player.getActualRoom().getName();
     }
+
 }

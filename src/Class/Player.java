@@ -53,6 +53,7 @@ public class Player {
         for (Room room : actualRoom.getAround()) {
             if (room.getName().equalsIgnoreCase(roomName)) {
                 actualRoom = room;
+                return;
             }
         }
     }
@@ -69,7 +70,7 @@ public class Player {
 
     public boolean RoomisAround(String room){
         for (int i = 0; i < getActualRoom().getAround().size(); i++) {
-           if(getActualRoom().getAround().get(i).equals(room)){
+            if(getActualRoom().getAround().get(i).getName().equalsIgnoreCase(room)){
                return true;
            }
 
@@ -101,6 +102,9 @@ public class Player {
             inventory.clear();
             inventory.add(new Item("karta od hangaru", "Klíč od dveří hangáru"));
         }
+    }
+    public void consumeTime(int amount) {
+        Time -= amount;
     }
 
 }
