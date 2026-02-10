@@ -6,11 +6,14 @@ import java.util.List;
 public class Room {
     private String name;
     private String description;
-    private List<String> persons;
-    private List<Item> items;
     private boolean isAvailable;
+    private List<String> persons = new ArrayList<>();
+    private List<String> itemsNames = new ArrayList<>();
+    private List<String> aroundNames = new ArrayList<>();
 
-    private List<String> aroundNames;
+
+
+    private List<Item> items = new ArrayList<>();
     private List<Room> around = new ArrayList<>();
 
     public List<String> getAroundNames() {
@@ -53,19 +56,27 @@ public class Room {
         this.persons = persons;
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
     public boolean isAvailable() {
         return isAvailable;
     }
 
     public void setAvailable(boolean available) {
         isAvailable = available;
+    }
+
+    public List<String> getItemsNames() {
+        return itemsNames;
+    }
+
+    public void setItemsNames(List<String> itemsNames) {
+        this.itemsNames = itemsNames;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }

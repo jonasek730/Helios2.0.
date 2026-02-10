@@ -14,8 +14,12 @@ private Player player;
     public String execute(String argument) {
         if("lyra".equalsIgnoreCase(argument)) {
             androidLyra lyra = dataloader.loadAndroidLyra();
-            return rozhrani.dialogueLyra(lyra, player, lyra.getInventory().get(1));
-    }
+            if (lyra.getInventory().isEmpty()) {
+                return "Lyra teď nemá žádný předmět.";
+            }
+            return rozhrani.dialogueLyra(lyra, player, lyra.getInventory().get(0));
+        }
+
         return "S kým chceš mluvit.";
 
 

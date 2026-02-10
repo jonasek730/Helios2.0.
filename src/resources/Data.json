@@ -7,7 +7,7 @@
       "description": "Jsi v obytné sekci. Místnost je větší a útulná. Kolem tebe se nachází několik spacích kryobuňek.",
       "aroundNames": ["Řídicí můstek", "Komunikační uzel"],
       "persons": [],
-      "items": ["Klíč od obytné místnosti"],
+      "itemsNames": ["Klíč od obytné místnosti"],
       "available": true
     },
     {
@@ -15,7 +15,7 @@
       "description": "Nacházíš se na řídicím můstku. Uprostřed místnosti je vyvýšený velín.",
       "aroundNames": ["Obytná sekce", "Sklad a údržba", "Laboratoře"],
       "persons": [],
-      "items": [],
+      "itemsNames": [],
       "available": false
     },
     {
@@ -23,7 +23,7 @@
       "description": "Laboratoře jsou čisté a plné přístrojů.",
       "aroundNames": ["Řídicí můstek", "Energetické jádro"],
       "persons": ["android Lyra"],
-      "items": [],
+      "itemsNames": [],
       "available": false
     },
     {
@@ -31,7 +31,7 @@
       "description": "Vysoce kontaminovaná místnost. Oblek je nutnost.",
       "aroundNames": ["Laboratoře"],
       "persons": [],
-      "items": ["energetický článek"],
+      "itemsNames": ["energetický článek"],
       "available": false
     },
     {
@@ -39,7 +39,7 @@
       "description": "Velká místnost plná regálů a beden.",
       "aroundNames": ["Řídicí můstek", "Komunikační uzel", "Hangár"],
       "persons": ["AX-3"],
-      "items": [],
+      "itemsNames": [],
       "available": false
     },
     {
@@ -47,7 +47,7 @@
       "description": "Menší místnost plná serverů.",
       "aroundNames": ["Obytná sekce", "Sklad a údržba"],
       "persons": [],
-      "items": ["1/2 karty do hangaru"],
+      "itemsNames": ["1/2 karty do hangaru"],
       "available": false
     },
     {
@@ -55,7 +55,7 @@
       "description": "Velký hangár s rozbitými moduly.",
       "aroundNames": ["Sklad a údržba"],
       "persons": [],
-      "items": [],
+      "itemsNames": [],
       "available": false
     }
   ],
