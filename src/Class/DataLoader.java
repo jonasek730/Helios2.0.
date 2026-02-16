@@ -15,18 +15,18 @@ import java.util.ArrayList;
 public class DataLoader {
     private final ObjectMapper parser = new ObjectMapper();
 
-    private JsonNode loadProjectNode() {
+    private JsonNode loadRootNode() {
         try (InputStream input = openDataFile()) {
-            JsonNode root = parser.readTree(input);
-            JsonNode project = root.get("Project");
 
             if (input == null) {
                 throw new RuntimeException("Data.json nebyl nalezen");
             }
-            if (project == null || project.isMissingNode()) {
-                throw new RuntimeException("V Data.json chybí uzel 'Project'.");
+            JsonNode root = parser.readTree(input);
+            if (root == null || root.isMissingNode()) {
+                throw new RuntimeException("Data.json je prázdný nebo neplatný.");
             }
-            return project;
+
+            return root;
         } catch (IOException e) {
             throw new RuntimeException("Nepodařilo se načíst Data.json.", e);
         }
@@ -46,9 +46,9 @@ public class DataLoader {
 
     }
 
-    public Map<String, Item> loadItemMap(JsonNode project) {
+    public Map<String, Item> loadItemMap(JsonNode root) {
         Map<String, Item> items = new HashMap<>();
-        JsonNode itemsNode = project.get("items");
+        JsonNode itemsNode = root.get("items");
 
         if (itemsNode == null || !itemsNode.isArray()) {
             return items;
@@ -65,9 +65,10 @@ public class DataLoader {
     }
 
     public List<Room> loadRoomsData() {
-        JsonNode project = loadProjectNode();
-        Map<String, Item> itemMap = loadItemMap(project);
-        JsonNode roomsNode = project.get("rooms");
+        JsonNode root = loadRootNode();
+        Map<String, Item> itemMap = loadItemMap(root);
+        JsonNode roomsNode = root.get("rooms");
+
 
         if (roomsNode == null || !roomsNode.isArray()) {
             return new ArrayList<>();
@@ -94,7 +95,7 @@ public class DataLoader {
             room.setPersons(persons);
 
             List<Item> roomItems = new ArrayList<>();
-            for (JsonNode itemNameNode : roomNode.path("items")) {
+            for (JsonNode itemNameNode : roomNode.path("itemsNames")) {
                 String itemName = itemNameNode.asText();
                 Item item = itemMap.get(itemName);
                 if (item != null) {
@@ -110,13 +111,14 @@ public class DataLoader {
     }
 
     public List<Item> loadItemData() {
-        JsonNode project = loadProjectNode();
-        return new ArrayList<>(loadItemMap(project).values());
+        JsonNode root = loadRootNode();
+        return new ArrayList<>(loadItemMap(root).values());
+
     }
 
     public androidLyra loadAndroidLyra() {
-        JsonNode project = loadProjectNode();
-        JsonNode lyraNode = project.path("androidLyra");
+        JsonNode root = loadRootNode();
+        JsonNode lyraNode = root.path("androidLyra");
 
         androidLyra lyra = new androidLyra();
         lyra.setName(lyraNode.path("name").asText("android Lyra"));
@@ -124,7 +126,7 @@ public class DataLoader {
         lyra.setDialogue1(lyraNode.path("dialogue1").asText(""));
         lyra.setDialogue1more(lyraNode.path("dialogue1More").asText(""));
 
-        Map<String, Item> itemMap = loadItemMap(project);
+        Map<String, Item> itemMap = loadItemMap(root);
         List<Item> inventory = new ArrayList<>();
         for (JsonNode itemNameNode : lyraNode.path("inventory")) {
             String itemName = itemNameNode.asText();
@@ -139,8 +141,9 @@ public class DataLoader {
     }
 
     public robotAX loadRobotAX() {
-        JsonNode project = loadProjectNode();
-        JsonNode axNode = project.path("robotAX");
+        JsonNode root = loadRootNode();
+        JsonNode axNode = root.path("robotAX");
+
 
         robotAX ax = new robotAX();
         ax.setName(axNode.path("name").asText("AX-3"));

@@ -9,6 +9,7 @@ import static Class.UserInterface.helpInfo;
 
     public class GameEngine {
     private boolean playing;
+        private Player player;
 
 
 
@@ -18,7 +19,7 @@ import static Class.UserInterface.helpInfo;
        List<Room> rooms = loader.loadRoomsData();
        DataLoader dl =new DataLoader();
        dl.linkRooms(rooms);
-       Player player = new Player("hrac",rooms.get(0),100);
+       player = new Player("hrac",rooms.get(0),100);
        initCommands(player,new UserInterface(), loader);
        Scanner scr = new Scanner(System.in);
        boolean running = true;
@@ -26,8 +27,6 @@ import static Class.UserInterface.helpInfo;
 
        while (running) {
            helpInfo();
-           System.out.println("\nAktuální místnost: " + player.getActualRoom().getName());
-           System.out.println("Popis: " + player.getActualRoom().getDescription());
            System.out.print("> ");
 
            String input = scr.nextLine();
@@ -53,8 +52,16 @@ import static Class.UserInterface.helpInfo;
     public String isWin(){return "Vyhrál jsi";}
 
 
+   private void printCurrentRoomInfo() {
+            System.out.println("\nAktuální místnost: " + player.getActualRoom().getName());
+            System.out.println("Popis: " + player.getActualRoom().getDescription());
+        }
 
-    private Map<String, Command> commands = new HashMap<>();
+
+
+
+
+        private Map<String, Command> commands = new HashMap<>();
     public GameEngine(){
 
     }
@@ -81,11 +88,16 @@ import static Class.UserInterface.helpInfo;
                 System.out.println("Neznámý příkaz!");
                 return;
             }
+            Room previousRoom = player.getActualRoom();
 
             String result = command.execute(argument);
             if (result != null && !result.isBlank()) {
                 System.out.println(result);
             }
+            if ("jdi".equalsIgnoreCase(commandName) && player.getActualRoom() != previousRoom) {
+                printCurrentRoomInfo();
+            }
+
 
         }
 
