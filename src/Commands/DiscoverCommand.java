@@ -28,7 +28,7 @@ public class DiscoverCommand implements Command {
                 return result;
             }
         }
-
+        player.checkInventory();
         return "Našel jsi: " + String.join(", ", picked);
     }
 }

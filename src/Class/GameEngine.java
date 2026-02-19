@@ -65,15 +65,14 @@ import static Class.UserInterface.helpInfo;
     public GameEngine(){
 
     }
-    private void initCommands(Player p,UserInterface ui,DataLoader dl) {
-        commands.put("jdi", new MoveCommand(p));
-        commands.put("hledej", new DiscoverCommand(p));
-        commands.put("mluv", new TalkCommand(ui,dl,p));
-        commands.put("cas", new TimeCommand(p));
-        commands.put("napoveda", new HintCommand());
-        commands.put("inventar", new InventoryCommand(p));
-        commands.put("mapa", new MapCommand(p));
-        commands.put("uloz", new SaveCommand());
+        private void initCommands(Player p,UserInterface ui,DataLoader dl) {
+            commands.put("jdi", new MoveCommand(p));
+            commands.put("hledej", new DiscoverCommand(p));
+            commands.put("mluv", new TalkCommand(ui, dl, p));
+            commands.put("cas", new TimeCommand(p));
+            commands.put("napoveda", new HintCommand());
+            commands.put("inventar", new InventoryCommand(p));
+            commands.put("mapa", new MapCommand(p));
     }
 
         public void instructions(String input){

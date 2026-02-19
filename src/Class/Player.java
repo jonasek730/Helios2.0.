@@ -106,5 +106,18 @@ public class Player {
     public void consumeTime(int amount) {
         Time -= amount;
     }
+    public Room getAroundRoomByName(String roomName) {
+        for (Room room : actualRoom.getAround()) {
+            if (room.getName().equalsIgnoreCase(roomName)) {
+                return room;
+            }
+        }
+        return null;
+    }
+
+    public void unlockFirstRoom() {
+            actualRoom.setAvailable(true);
+    }
+
 
 }

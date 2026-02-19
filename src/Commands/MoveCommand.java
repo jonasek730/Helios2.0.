@@ -12,12 +12,24 @@ private Player player;
         if (argument == null || argument.isBlank()) {
             return "Kam mám jít?";
         }
+        if ("Obytná sekce".equalsIgnoreCase(player.getActualRoom().getName())
+                && !player.hasItem("Klíč od obytné místnosti")) {
+            return "Nejdřív musíš v obytné sekci najít klíč a odemknout dveře.";
+        }
+
+        if (player.hasItem("Klíč od obytné místnosti")) {
+            player.unlockFirstRoom();
+
+        }
         if (!player.RoomisAround(argument)) {
             return "Tím směrem to nejde.";
         }
-
+        Room destinationRoom = player.getAroundRoomByName(argument);
+        if (destinationRoom == null || !destinationRoom.isAvailable()) {
+            return "Do této místnosti se teď nemůžeš přesunout.";
+        }
         player.moveToRoom(argument);
-        player.consumeTime(1);
+        player.consumeTime(5);
         return "Přesunul ses do místnosti: " + player.getActualRoom().getName();
     }
 
