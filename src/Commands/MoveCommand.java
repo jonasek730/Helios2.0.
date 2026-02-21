@@ -16,16 +16,13 @@ private Player player;
                 && !player.hasItem("Klíč od obytné místnosti")) {
             return "Nejdřív musíš v obytné sekci najít klíč a odemknout dveře.";
         }
-
-        if (player.hasItem("Klíč od obytné místnosti")) {
-            player.unlockFirstRoom();
-
-        }
+            player.checkInventory();
         if (!player.RoomisAround(argument)) {
             return "Tím směrem to nejde.";
         }
         Room destinationRoom = player.getAroundRoomByName(argument);
-        if (destinationRoom == null || !destinationRoom.isAvailable()) {
+        Room currentRoom= player.getActualRoom();
+        if (!currentRoom.isAvailable() || !destinationRoom.isAvailable()) {
             return "Do této místnosti se teď nemůžeš přesunout.";
         }
         player.moveToRoom(argument);

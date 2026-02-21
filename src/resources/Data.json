@@ -7,7 +7,7 @@
       "aroundNames": ["Řídicí můstek", "Komunikační uzel"],
       "persons": [],
       "itemsNames": ["Klíč od obytné místnosti"],
-      "available": true
+      "available": false
     },
     {
       "name": "Řídicí můstek",
@@ -15,7 +15,7 @@
       "aroundNames": ["Obytná sekce", "Sklad a údržba", "Laboratoře"],
       "persons": [],
       "itemsNames": [],
-      "available": false
+      "available": true
     },
     {
       "name": "Laboratoře",
@@ -31,7 +31,7 @@
       "aroundNames": ["Laboratoře"],
       "persons": [],
       "itemsNames": ["energetický článek"],
-      "available": false
+      "available": true
     },
     {
       "name": "Sklad a údržba",
@@ -39,7 +39,7 @@
       "aroundNames": ["Řídicí můstek", "Komunikační uzel", "Hangár"],
       "persons": ["AX-3"],
       "itemsNames": [],
-      "available": false
+      "available": true
     },
     {
       "name": "Komunikační uzel",
@@ -47,7 +47,7 @@
       "aroundNames": ["Obytná sekce", "Sklad a údržba"],
       "persons": [],
       "itemsNames": ["1/2 karty do hangaru"],
-      "available": false
+      "available": true
     },
     {
       "name": "Hangár",

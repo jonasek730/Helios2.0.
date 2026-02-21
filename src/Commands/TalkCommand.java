@@ -12,6 +12,7 @@ private Player player;
     }
 
     public String execute(String argument) {
+        //Todo mluveniRobotAX
         androidLyra lyra = dataloader.loadAndroidLyra();
         if (lyra.getInventory().isEmpty()) {
             return "Lyra teď nemá žádný předmět.";

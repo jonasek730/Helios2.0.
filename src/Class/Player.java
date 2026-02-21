@@ -102,6 +102,10 @@ public class Player {
             inventory.clear();
             inventory.add(new Item("karta od hangaru", "Klíč od dveří hangáru"));
         }
+        if (hasItem("Klíč od obytné místnosti")){
+            actualRoom.setAvailable(true);
+
+        }
     }
     public void consumeTime(int amount) {
         Time -= amount;
