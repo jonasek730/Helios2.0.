@@ -47,6 +47,9 @@ import static Class.UserInterface.helpInfo;
                System.out.println("Čas vypršel, loď se rozpadla. Prohrál jsi.");
                running = false;
            }
+           if ("Hangár".equals(player.getActualRoom().getName())||player.hasItem("energetický článek")&&player.hasItem("klíčky od modulu")&&player.hasItem("Datové nosiče")){
+               System.out.println("Gratuluji vyhrál jsi.");
+           }
        }
    }
     public String isWin(){return "Vyhrál jsi";}

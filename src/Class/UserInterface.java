@@ -7,9 +7,43 @@ public class UserInterface {
             System.out.println( "Vítej ve hře Helios od tvůrce Jonáše.\n Tvým cílem je uniknout z rozpadající lodi pomocí modulu před kompletní destrukcí.\n Loď se pomalu rozpadá a nemáš moc času každý pohyb ti vyplýtvá trochu času, proto se musíš rozhodovat správně.\n Hodně štěstí.\n\n");
         }
         Scanner src = new Scanner(System.in);
-        public String dialogueAX(robotAX ax,Player player,Item item){
+        public String dialogueAX(robotAX ax){
             ax.getDialogue();
-            return "";
+            try{
+                System.out.println("Možnosti:\n 1.Zjistit přístupový kód.\n 2.Co se děje s lodí?\n3.Odejít");
+                String choice= src.nextLine();
+                switch (choice){
+                    case "1":
+                        ax.getDialogue1();
+                        System.out.println("Možnosti:\n 1.Ano \n 2.Ne \nZadej číslo volby.");
+                        String choice2= src.nextLine();
+                        switch (choice2){
+                            case "1":
+                                ax.getDialogue1question();
+                                String choice3 = src.nextLine();
+                                if(choice3 =="8"){
+                                    ax.getAnswer();
+
+                                }else{
+                                    System.out.println("Odpověd je špatná.");
+                                    break;
+                                }
+                            case "2":return choice;
+                            default:  System.out.println("Neznámý příkaz.");
+                            return choice;
+                        }
+                    case"2":
+                        ax.getDialogue2();
+                        return choice;
+                    case "3":
+                        return choice;
+                    default:
+                        System.out.println("Neznámý příkaz.");
+                }
+            } catch (RuntimeException e) {
+                throw new RuntimeException(e);
+            }
+            return null;
         }
         public String dialogueLyra(androidLyra lyra, Player player, Item item){
             lyra.getDialogue();

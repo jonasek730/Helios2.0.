@@ -14,7 +14,7 @@
       "description": "Nacházíš se na řídicím můstku. Uprostřed místnosti je vyvýšený velín.",
       "aroundNames": ["Obytná sekce", "Sklad a údržba", "Laboratoře"],
       "persons": [],
-      "itemsNames": [],
+      "itemsNames": ["klíčky od modulu"],
       "available": true
     },
     {
@@ -37,17 +37,26 @@
       "name": "Sklad a údržba",
       "description": "Velká místnost plná regálů a beden.",
       "aroundNames": ["Řídicí můstek", "Komunikační uzel", "Hangár"],
-      "persons": ["robotAX"],
+      "persons": [],
       "itemsNames": [],
       "available": true
     },
     {
       "name": "Komunikační uzel",
       "description": "Menší místnost plná serverů.",
-      "aroundNames": ["Obytná sekce", "Sklad a údržba"],
+      "aroundNames": ["Obytná sekce", "Sklad a údržba","Strojovna"],
       "persons": [],
-      "itemsNames": ["1/2 karty do hangaru"],
+      "itemsNames": ["Datové nosiče"],
       "available": true
+    },
+    {
+      "name": "Strojovna",
+      "description":"Velká smradlavá hlasitá místnost.Spousta tlačítek a displejů.",
+      "aroundNames": ["Komunikační uzel"],
+      "persons": ["robotAX"],
+      "itemsNames":[],
+      "available": true
+
     }],
     "hangar":[{
       "name": "Hangár",
@@ -73,18 +82,6 @@
         "description": "Slouží jako pohon pro únikový modul."
       },
       {
-        "name": "1/2 karty do hangaru",
-        "description": "Polovina karty pro otevření hangáru."
-      },
-      {
-        "name": "2/2 karty do hangaru",
-        "description": "Polovina karty pro otevření hangáru."
-      },
-      {
-        "name": "karta do hangaru",
-        "description": "Složená karta pro otevření hangáru."
-      },
-      {
         "name": "ochranný oblek",
         "description": "Ochranný oblek umožňující vstup do kontaminovaných prostor."
       },
@@ -102,12 +99,12 @@
       "name": "AX-3",
       "inventory": ["1/2 karty do hangaru"],
       "dialogue": "Ahoj, vítej ve skladu. Jsem robot AX-3 a pomáhám s údržbou. Jak ti mohu pomoci?",
-      "dialogue1": "Polovinu přístupové karty mám, ale nejsem si jistý, zda bych ji měl dát. Mohu ti položit otázku?",
-      "dialogue1Question": "Kolik členů měla posádka této výzkumné lodi? (odpověd nalezneš v Readme)",
+      "dialogue1": "Polovinu kódu mám, ale nejsem si jistý, zda bych ti ho měl říkat. Mohu ti položit otázku?",
+      "dialogue1question": "Kolik členů měla posádka této výzkumné lodi? (odpověd nalezneš v Readme)",
       "count": 8,
-      "answer": "Tady je karta od hangáru. Nech prosím dveře otevřené.",
+      "answer": "Tady je kód od hangáru. Nech prosím dveře otevřené. => 2058 ",
       "dialogue2": "Loď je ve špatném stavu. Snažím se ji opravit, ale nejde mi to.",
-      "ending": "Děkuji. Jdu do hangáru, ať můžeme odletět."
+      "ending": "Děkuji že jsi se přišel. Jdu do hangáru, ať můžeme odletět spolu."
     },
 
     "androidLyra": {

@@ -29,7 +29,7 @@ public class Player {
     }
 
     public String addInventory(Item item) {
-        if (inventory.size() > 3) {
+        if (inventory.size() > 4) {
             return "Tvůj inventář je plný.";
         } else {
             inventory.add(item);
@@ -82,15 +82,6 @@ public class Player {
     public void setInventory(ArrayList<Item> inventory) {
         this.inventory = inventory;
     }
-
-    public String getMainTask() {
-        return mainTask;
-    }
-
-    public void setMainTask(String mainTask) {
-        this.mainTask = mainTask;
-    }
-
     public boolean hasItem(String name) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(name)) {

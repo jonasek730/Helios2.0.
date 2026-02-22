@@ -1,28 +1,28 @@
 package Class;
 
 public class robotAX extends Player {
-private String Dialogue;
-private String Dialogue1;
+private String dialogue;
+private String dialogue1;
 private String dialogue1question;
-private int Count;
-private String Answer;
-private String Dialogue2;
-private String Ending;
+private int count;
+private String answer;
+private String dialogue2;
+private String ending;
 
     public String getDialogue() {
-        return Dialogue;
+        return dialogue;
     }
 
     public void setDialogue(String dialogue) {
-        Dialogue = dialogue;
+        this.dialogue = dialogue;
     }
 
     public String getDialogue1() {
-        return Dialogue1;
+        return dialogue1;
     }
 
     public void setDialogue1(String dialogue1) {
-        Dialogue1 = dialogue1;
+        this.dialogue1 = dialogue1;
     }
 
     public String getDialogue1question() {
@@ -34,34 +34,34 @@ private String Ending;
     }
 
     public int getCount() {
-        return Count;
+        return count;
     }
 
     public void setCount(int count) {
-        Count = count;
+        this.count = count;
     }
 
     public String getAnswer() {
-        return Answer;
+        return answer;
     }
 
     public void setAnswer(String answer) {
-        Answer = answer;
+        this.answer = answer;
     }
 
     public String getDialogue2() {
-        return Dialogue2;
+        return dialogue2;
     }
 
     public void setDialogue2(String dialogue2) {
-        Dialogue2 = dialogue2;
+        this.dialogue2 = dialogue2;
     }
 
     public String getEnding() {
-        return Ending;
+        return ending;
     }
 
     public void setEnding(String ending) {
-        Ending = ending;
+        this.ending = ending;
     }
 }

@@ -13,29 +13,30 @@ private Player player;
 
     public String execute(String argument) {
         androidLyra lyra = dataloader.loadAndroidLyra();
-        if(!player.getActualRoom().getPersons().isEmpty()){
-            if(player.getActualRoom().getPersons().contains("androidL" +
-                    "yra")){
+        robotAX ax = dataloader.loadRobotAX();
+        if (player.getActualRoom().getPersons().isEmpty()) {
+            return "V místnosti si není s kým povídat";
+        } else {
+            if (player.getActualRoom().getPersons().contains("android Lyra")) {
 
                 if (lyra.getInventory().isEmpty()) {
                     return "Lyra teď nemá žádný předmět.";
-                }
-                Item reward = lyra.getInventory().get(0);
-                String result = rozhrani.dialogueLyra(lyra, player, reward);
-                if (result == null) {
-                    return "Konverzace ukončena.";
-                }
-                return "Konverzace ukončena.";}
-                }
-            if (player.getActualRoom().getPersons().contains("robotAX")){
+                } else {
+                    Item reward = lyra.getInventory().get(0);
+                    rozhrani.dialogueLyra(lyra, player, reward);
 
+                }
+                return "Konverzace ukončena.";
             }
-        else {
-            return "V místnosti si není s kým povídat";
+            if (player.getActualRoom().getPersons().contains("robotAX")) {
+               rozhrani.dialogueAX(ax);
+                if (player.getActualRoom().getAround().get(2).isAvailable()) {
+                    ax.getEnding();
+                    player.getActualRoom().getPersons().clear();
+                    player.getActualRoom().getAround().get(2).getPersons().add("robotAX");
+                }
+            }
         }
-        return"";
+        return null;
     }
-
-
-
 }

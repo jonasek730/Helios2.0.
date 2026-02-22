@@ -12,6 +12,9 @@ private Player player;
         if (argument == null || argument.isBlank()) {
             return "Kam mám jít?";
         }
+        if(player.hasItem("ochranný oblek")){
+            player.moveToRoom(argument);
+        }
         if ("Obytná sekce".equalsIgnoreCase(player.getActualRoom().getName())
                 && !player.hasItem("Klíč od obytné místnosti")) {
             return "Nejdřív musíš v obytné sekci najít klíč a odemknout dveře.";

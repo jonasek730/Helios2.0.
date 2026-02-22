@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class androidLyra extends Player {
-    private String Dialogue;
+    private String dialogue;
     private String dialogue1;
     private String dialogue1more;
     private List<Item>inventory;
 
     public String getDialogue() {
-        return Dialogue;
+        return dialogue;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class androidLyra extends Player {
     }
 
     public void setDialogue(String dialogue) {
-        Dialogue = dialogue;
+        this.dialogue = dialogue;
     }
 
     public String getDialogue1() {
