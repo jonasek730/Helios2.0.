@@ -2,6 +2,7 @@ package Class;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Player {
     List<Item> inventory = new ArrayList<>();
@@ -118,10 +119,16 @@ public class Player {
         }
         return null;
     }
-
-    public void unlockFirstRoom() {
-            actualRoom.setAvailable(true);
+    public String hangarDoor(Scanner src,Hangar hangar){
+        int code = src.nextInt();
+        if(code == hangar.getHangarcode()){
+            hangar.setAvailable(true);
+            return "Kód byl správný otevřeli se ti dveře do Hanaru";
+        }
+        return"Zadal jsi špatný kód. Zkus se poptat o správný kód robota AX.";
     }
+
+
 
 
 }

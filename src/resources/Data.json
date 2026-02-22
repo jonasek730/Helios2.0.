@@ -48,14 +48,16 @@
       "persons": [],
       "itemsNames": ["1/2 karty do hangaru"],
       "available": true
-    },
-    {
+    }],
+    "hangar":[{
       "name": "Hangár",
       "description": "Velký hangár s rozbitými moduly.",
       "aroundNames": ["Sklad a údržba"],
       "persons": [],
       "itemsNames": [],
-      "available": false
+      "available": false,
+      "ModulAvailable": false,
+      "Hangarcode": 2058
     }
   ],
 

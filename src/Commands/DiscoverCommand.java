@@ -3,6 +3,7 @@ import Class.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class DiscoverCommand implements Command {
     private Player player;
@@ -15,6 +16,10 @@ public class DiscoverCommand implements Command {
         List<Item> roomItems = player.getActualRoom().getItems();
         if (roomItems.isEmpty()) {
             return "V místnosti nic není.";
+        }
+        if (player.getActualRoom().getName()=="Sklad a údržba"){
+            Scanner src =new Scanner(System.in);
+            player.hangarDoor(src,)
         }
         List<String> picked = new ArrayList<>();
         List<Item> snapshot = new ArrayList<>(roomItems);
