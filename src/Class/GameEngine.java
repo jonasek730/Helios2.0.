@@ -55,6 +55,9 @@ import static Class.UserInterface.helpInfo;
    private void printCurrentRoomInfo() {
             System.out.println("\nAktuální místnost: " + player.getActualRoom().getName());
             System.out.println("Popis: " + player.getActualRoom().getDescription());
+            if (!player.getActualRoom().getPersons().isEmpty()){
+                System.out.println("V místnosti se nachází" +player.getActualRoom().getPersons());
+            }
         }
 
 

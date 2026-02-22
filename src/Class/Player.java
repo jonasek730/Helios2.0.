@@ -11,6 +11,9 @@ public class Player {
     private int Time;
     private String mainTask;
 
+    public Player() {
+    }
+
     public int getTime() {
         return Time;
     }
@@ -20,22 +23,20 @@ public class Player {
         this.actualRoom = actualRoom;
         Time = time;
     }
-    public Player(){}
 
     public List<Item> getInventory() {
         return inventory;
     }
 
     public String addInventory(Item item) {
-        if(inventory.size()>3){
+        if (inventory.size() > 3) {
             return "Tvůj inventář je plný.";
-        }else{
+        } else {
             inventory.add(item);
             return "Prvek byl sebrán.";
 
         }
     }
-
 
 
     public String getName() {
@@ -54,10 +55,10 @@ public class Player {
         for (Room room : actualRoom.getAround()) {
             if (room.getName().equalsIgnoreCase(roomName)) {
                 actualRoom = room;
-                return;
             }
         }
     }
+
     public void setActualRoom(Room actualRoom) {
         this.actualRoom = actualRoom;
     }
@@ -68,12 +69,11 @@ public class Player {
     }
 
 
-
-    public boolean RoomisAround(String room){
+    public boolean RoomisAround(String room) {
         for (int i = 0; i < getActualRoom().getAround().size(); i++) {
-            if(getActualRoom().getAround().get(i).getName().equalsIgnoreCase(room)){
-               return true;
-           }
+            if (getActualRoom().getAround().get(i).getName().equalsIgnoreCase(room)) {
+                return true;
+            }
 
         }
         return false;
@@ -90,6 +90,7 @@ public class Player {
     public void setMainTask(String mainTask) {
         this.mainTask = mainTask;
     }
+
     public boolean hasItem(String name) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -98,19 +99,22 @@ public class Player {
         }
         return false;
     }
+
     public void checkInventory() {
         if (hasItem("1/2 karty do hangaru") && hasItem("2/2 karty do hangaru")) {
             inventory.clear();
             inventory.add(new Item("karta od hangaru", "Klíč od dveří hangáru"));
         }
-        if (hasItem("Klíč od obytné místnosti")){
+        if (hasItem("Klíč od obytné místnosti")) {
             actualRoom.setAvailable(true);
 
         }
     }
+
     public void consumeTime(int amount) {
         Time -= amount;
     }
+
     public Room getAroundRoomByName(String roomName) {
         for (Room room : actualRoom.getAround()) {
             if (room.getName().equalsIgnoreCase(roomName)) {
@@ -119,16 +123,22 @@ public class Player {
         }
         return null;
     }
-    public String hangarDoor(Scanner src,Hangar hangar){
-        int code = src.nextInt();
-        if(code == hangar.getHangarcode()){
-            hangar.setAvailable(true);
-            return "Kód byl správný otevřeli se ti dveře do Hanaru";
+
+    public String hangarDoor(Scanner src, Hangar hangar, Room laboratory) {
+        if(src.hasNextInt()) {
+            int code = src.nextInt();
+            if (code == hangar.getHangarcode()) {
+                hangar.setAvailable(true);
+                if (laboratory != null) {
+                    laboratory.setAvailable(true);
+                }
+                return "Kód byl správný, odemkly se dveře do Hangáru i Laboratoří.";
+
+            }
         }
-        return"Zadal jsi špatný kód. Zkus se poptat o správný kód robota AX.";
+
+
+            return "Zadal jsi špatný kód. Zkus se poptat o správný kód robota AX.";
+
     }
-
-
-
-
 }

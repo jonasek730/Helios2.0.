@@ -37,7 +37,7 @@
       "name": "Sklad a údržba",
       "description": "Velká místnost plná regálů a beden.",
       "aroundNames": ["Řídicí můstek", "Komunikační uzel", "Hangár"],
-      "persons": ["AX-3"],
+      "persons": ["robotAX"],
       "itemsNames": [],
       "available": true
     },
@@ -48,14 +48,16 @@
       "persons": [],
       "itemsNames": ["1/2 karty do hangaru"],
       "available": true
-    },
-    {
+    }],
+    "hangar":[{
       "name": "Hangár",
       "description": "Velký hangár s rozbitými moduly.",
       "aroundNames": ["Sklad a údržba"],
       "persons": [],
       "itemsNames": [],
-      "available": false
+      "available": false,
+      "ModulAvailable": false,
+      "Hangarcode": 2058
     }
   ],
 
@@ -101,7 +103,7 @@
       "inventory": ["1/2 karty do hangaru"],
       "dialogue": "Ahoj, vítej ve skladu. Jsem robot AX-3 a pomáhám s údržbou. Jak ti mohu pomoci?",
       "dialogue1": "Polovinu přístupové karty mám, ale nejsem si jistý, zda bych ji měl dát. Mohu ti položit otázku?",
-      "dialogue1Question": "Kolik členů měla posádka této výzkumné lodi?",
+      "dialogue1Question": "Kolik členů měla posádka této výzkumné lodi? (odpověd nalezneš v Readme)",
       "count": 8,
       "answer": "Tady je karta od hangáru. Nech prosím dveře otevřené.",
       "dialogue2": "Loď je ve špatném stavu. Snažím se ji opravit, ale nejde mi to.",

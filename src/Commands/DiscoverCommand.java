@@ -14,13 +14,21 @@ public class DiscoverCommand implements Command {
 
     public String execute(String argument) {
         List<Item> roomItems = player.getActualRoom().getItems();
+
+        if ("Sklad a údržba".equals(player.getActualRoom().getName())) {
+            Room hangarRoom = player.getAroundRoomByName("Hangár");
+            if (hangarRoom instanceof Hangar hangar && !hangar.isAvailable()) {
+                Room laboratory = getLaboratoryFromStorage();
+                Scanner src = new Scanner(System.in);
+                System.out.print("Zadej přístupový kód: ");
+                return player.hangarDoor(src, hangar, laboratory);
+            }
+        }
         if (roomItems.isEmpty()) {
             return "V místnosti nic není.";
         }
-        if (player.getActualRoom().getName()=="Sklad a údržba"){
-            Scanner src =new Scanner(System.in);
-            player.hangarDoor(src,)
-        }
+
+
         List<String> picked = new ArrayList<>();
         List<Item> snapshot = new ArrayList<>(roomItems);
 
@@ -36,5 +44,19 @@ public class DiscoverCommand implements Command {
         player.checkInventory();
         return "Našel jsi: " + String.join(", ", picked);
     }
+    private Room getLaboratoryFromStorage() {
+        Room controlBridge = player.getAroundRoomByName("Řídicí můstek");
+        if (controlBridge == null) {
+            return null;
+        }
+
+        for (Room aroundRoom : controlBridge.getAround()) {
+            if ("Laboratoře".equalsIgnoreCase(aroundRoom.getName())) {
+                return aroundRoom;
+            }
+        }
+        return null;
+    }
+
 }
 

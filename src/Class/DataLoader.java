@@ -78,36 +78,52 @@ public class DataLoader {
 
         for (JsonNode roomNode : roomsNode) {
             Room room = new Room();
-            room.setName(roomNode.path("name").asText(""));
-            room.setDescription(roomNode.path("description").asText(""));
-            room.setAvailable(roomNode.path("available").asBoolean(false));
-
-            List<String> aroundNames = new ArrayList<>();
-            for (JsonNode around : roomNode.path("aroundNames")) {
-                aroundNames.add(around.asText());
-            }
-            room.setAroundNames(aroundNames);
-
-            List<String> persons = new ArrayList<>();
-            for (JsonNode person : roomNode.path("persons")) {
-                persons.add(person.asText());
-            }
-            room.setPersons(persons);
-
-            List<Item> roomItems = new ArrayList<>();
-            for (JsonNode itemNameNode : roomNode.path("itemsNames")) {
-                String itemName = itemNameNode.asText();
-                Item item = itemMap.get(itemName);
-                if (item != null) {
-                    roomItems.add(item);
-                }
-            }
-            room.setItems(roomItems);
-
+            setCommonRoomData(room, roomNode, itemMap);
             rooms.add(room);
         }
 
+
+        JsonNode hangarNode = root.path("hangar");
+        if (hangarNode.isArray()) {
+            for (JsonNode hangarData : hangarNode) {
+                Hangar hangar = new Hangar();
+                setCommonRoomData(hangar, hangarData, itemMap);
+                hangar.setModulAvailable(hangarData.path("ModulAvailable").asBoolean(false));
+                hangar.setHangarcode(hangarData.path("Hangarcode").asInt(2048));
+                rooms.add(hangar);
+            }
+
+        }
+
+
         return rooms;
+    }
+    private void setCommonRoomData(Room room, JsonNode roomNode, Map<String, Item> itemMap) {
+        room.setName(roomNode.path("name").asText(""));
+        room.setDescription(roomNode.path("description").asText(""));
+        room.setAvailable(roomNode.path("available").asBoolean(false));
+
+        List<String> aroundNames = new ArrayList<>();
+        for (JsonNode around : roomNode.path("aroundNames")) {
+            aroundNames.add(around.asText());
+        }
+        room.setAroundNames(aroundNames);
+        List<String> persons = new ArrayList<>();
+        for (JsonNode person : roomNode.path("persons")) {
+            persons.add(person.asText());
+        }
+        room.setPersons(persons);
+
+        List<Item> roomItems = new ArrayList<>();
+        for (JsonNode itemNameNode : roomNode.path("itemsNames")) {
+            String itemName = itemNameNode.asText();
+            Item item = itemMap.get(itemName);
+            if (item != null) {
+                roomItems.add(item);
+            }
+        }
+        room.setItems(roomItems);
+
     }
 
     public List<Item> loadItemData() {
