@@ -11,10 +11,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 
-
+/**
+ * Třída slouží k načtení dat se souboru
+ */
 public class DataLoader {
     private final ObjectMapper parser = new ObjectMapper();
 
+    /**
+     * Metoda načítá a převádí Json na strom
+     * @return vrací Json strom
+     */
     private JsonNode loadRootNode() {
         try (InputStream input = openDataFile()) {
 
@@ -32,7 +38,11 @@ public class DataLoader {
         }
     }
 
-
+    /**
+     * Metoda hledá Json ve více složkách
+     * @return vrací Jsion
+     * @throws IOException pokud nenajde Json dané složce volá jinou složku
+     */
     public InputStream openDataFile() throws IOException {
         try {
             return new FileInputStream("src/resources/Data.json");
@@ -46,6 +56,11 @@ public class DataLoader {
 
     }
 
+    /**
+     * Metoda pro každý objekt v Jsonu udělá objekt a přidá ho do mapy
+     * @param root strom ze kterého čerpá
+     * @return vrací mapu
+     */
     public Map<String, Item> loadItemMap(JsonNode root) {
         Map<String, Item> items = new HashMap<>();
         JsonNode itemsNode = root.get("items");
@@ -64,6 +79,10 @@ public class DataLoader {
         return items;
     }
 
+    /**
+     * Metoda z Jsonu tvoří seznam s místnostmi a jejich parametry
+     * @return vrací seznam
+     */
     public List<Room> loadRoomsData() {
         JsonNode root = loadRootNode();
         Map<String, Item> itemMap = loadItemMap(root);
@@ -98,6 +117,13 @@ public class DataLoader {
 
         return rooms;
     }
+
+    /**
+     * Metoda naplňující objekt room parametry, pokud nejaké chybí nastavý výchozí
+     * @param room daná místnost
+     * @param roomNode Strom ze kterého bere data
+     * @param itemMap mapa ve které jsou uloženy všechny místnosti
+     */
     private void setCommonRoomData(Room room, JsonNode roomNode, Map<String, Item> itemMap) {
         room.setName(roomNode.path("name").asText(""));
         room.setDescription(roomNode.path("description").asText(""));
@@ -132,6 +158,10 @@ public class DataLoader {
 
     }
 
+    /**
+     * Metoda která načítá objekt androidLyra
+     * @return vrací objekt
+     */
     public androidLyra loadAndroidLyra() {
         JsonNode root = loadRootNode();
         JsonNode lyraNode = root.path("androidLyra");
@@ -156,6 +186,10 @@ public class DataLoader {
         return lyra;
     }
 
+    /**
+     * Metoda která načítá objekt robotAX
+     * @return vrací objekt
+     */
     public robotAX loadRobotAX() {
         JsonNode root = loadRootNode();
         JsonNode axNode = root.path("robotAX");
@@ -166,6 +200,10 @@ public class DataLoader {
         return ax;
     }
 
+    /**
+     * Metoda nastavuje každé místnosti sousedy
+     * @param rooms seznam místností
+     */
 
     public void linkRooms(List<Room> rooms) {
 
@@ -176,7 +214,7 @@ public class DataLoader {
         }
 
         for (Room r : rooms) {
-            if (r.getAroundNames() == null) continue;
+            if (r.getAroundNames() == null){}
 
             for (String name : r.getAroundNames()) {
                 Room target = roomMap.get(name);

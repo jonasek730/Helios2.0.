@@ -1,5 +1,8 @@
 package Class;
 
+/**
+ * Třída objektu hangár dědí od room a přidává pár parametrů
+ */
 public class Hangar extends Room {
     private boolean ModulAvailable;
     private int Hangarcode;
@@ -21,6 +24,6 @@ public class Hangar extends Room {
     }
 
     public void FixModul(){
-
+//Todo metoda pro opravení modulu
     }
 }

@@ -2,12 +2,26 @@ package Class;
 
 import java.util.Scanner;
 
+/**
+ * Původně jsem se snažil držet všechy výpisy v této třídě
+ * Třída pro jednoduché metody s výpisem
+ */
 public class UserInterface {
+    /**
+     * Metoda pro představení hry
+     */
         public static void introduction(){
             System.out.println( "Vítej ve hře Helios od tvůrce Jonáše.\n Tvým cílem je uniknout z rozpadající lodi pomocí modulu před kompletní destrukcí.\n Loď se pomalu rozpadá a nemáš moc času každý pohyb ti vyplýtvá trochu času, proto se musíš rozhodovat správně.\n Hodně štěstí.\n\n");
         }
-        Scanner src = new Scanner(System.in);
-        public String dialogueAX(robotAX ax){
+
+
+    Scanner src = new Scanner(System.in);
+
+    /**
+     * Metoda pro rozhovor s robotemAX
+     * @param ax robot se kterým si hráč povídá
+     */
+    public String dialogueAX(robotAX ax){
             ax.getDialogue();
             try{
                 System.out.println("Možnosti:\n 1.Zjistit přístupový kód.\n 2.Co se děje s lodí?\n3.Odejít");
@@ -21,13 +35,13 @@ public class UserInterface {
                             case "1":
                                 ax.getDialogue1question();
                                 String choice3 = src.nextLine();
-                                if(choice3 =="8"){
-                                    ax.getAnswer();
-
-                                }else{
-                                    System.out.println("Odpověd je špatná.");
-                                    break;
+                                if(ax.getCount().equals(choice3)) {
+                                ax.getAnswer();
                                 }
+                                else{
+                                    System.out.println("Odpověd je špatná.");
+                                }
+                                break;
                             case "2":return choice;
                             default:  System.out.println("Neznámý příkaz.");
                             return choice;
@@ -45,6 +59,14 @@ public class UserInterface {
             }
             return null;
         }
+
+    /**
+     * Metoda pro rozhovor s androidLyra
+     * @param lyra objekt se kterym si hrac povida
+     * @param player hráč který si povídá
+     * @param item objekt který hráč dostane
+     * @return
+     */
         public String dialogueLyra(androidLyra lyra, Player player, Item item){
             lyra.getDialogue();
             try {

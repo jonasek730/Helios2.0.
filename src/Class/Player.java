@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Třída pro vytvoření hráče s parametry
+ */
 public class Player {
     List<Item> inventory = new ArrayList<>();
-    private String name;
+   private String name;
     private Room actualRoom;
     private int Time;
-    private String mainTask;
 
     public Player() {
     }
@@ -17,9 +19,12 @@ public class Player {
     public int getTime() {
         return Time;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Player(String name, Room actualRoom, int time) {
-        this.name = name;
+        this.name=name;
         this.actualRoom = actualRoom;
         Time = time;
     }
@@ -28,6 +33,12 @@ public class Player {
         return inventory;
     }
 
+
+    /**
+     * metoda pro přidání itemu do inventáře
+     * @param item objekt který chceme přidat
+     * @return info o sebrání
+     */
     public String addInventory(Item item) {
         if (inventory.size() > 4) {
             return "Tvůj inventář je plný.";
@@ -37,20 +48,14 @@ public class Player {
 
         }
     }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Room getActualRoom() {
         return actualRoom;
     }
 
+    /**
+     * Metoda pro posun hráče
+     * @param roomName název požadované místnosti
+     */
     public void moveToRoom(String roomName) {
         for (Room room : actualRoom.getAround()) {
             if (room.getName().equalsIgnoreCase(roomName)) {
@@ -59,16 +64,11 @@ public class Player {
         }
     }
 
-    public void setActualRoom(Room actualRoom) {
-        this.actualRoom = actualRoom;
-    }
-
-
-    public void setTime(int time) {
-        Time = time;
-    }
-
-
+    /**
+     * Metoda pro kontrolu okolních místností
+     * @param room hledaná místnost
+     * @return zda je místnost kolem aktuální místnosti
+     */
     public boolean RoomisAround(String room) {
         for (int i = 0; i < getActualRoom().getAround().size(); i++) {
             if (getActualRoom().getAround().get(i).getName().equalsIgnoreCase(room)) {
@@ -79,9 +79,10 @@ public class Player {
         return false;
     }
 
-    public void setInventory(ArrayList<Item> inventory) {
-        this.inventory = inventory;
-    }
+    /**
+     * Metoda která kontroluje zda má hráč objekt v inventáři
+     * @param name hledaný objekt
+     */
     public boolean hasItem(String name) {
         for (Item item : inventory) {
             if (item.getName().equalsIgnoreCase(name)) {
@@ -91,21 +92,29 @@ public class Player {
         return false;
     }
 
+    /**
+     * Metoda která se stará o otevření první místnosti
+     */
     public void checkInventory() {
-        if (hasItem("1/2 karty do hangaru") && hasItem("2/2 karty do hangaru")) {
-            inventory.clear();
-            inventory.add(new Item("karta od hangaru", "Klíč od dveří hangáru"));
-        }
         if (hasItem("Klíč od obytné místnosti")) {
             actualRoom.setAvailable(true);
 
         }
     }
 
+    /**
+     * Metoda která ubírá hráči čas
+     * @param amount množstvý času
+     */
     public void consumeTime(int amount) {
         Time -= amount;
     }
 
+    /**
+     * Metoda která hledá místnosti kolem podle jména
+     * @param roomName jméno místnosti
+     * @return vrací místnost s daným jménem
+     */
     public Room getAroundRoomByName(String roomName) {
         for (Room room : actualRoom.getAround()) {
             if (room.getName().equalsIgnoreCase(roomName)) {
@@ -115,6 +124,13 @@ public class Player {
         return null;
     }
 
+    /**
+     * Metoda která otevírá dveře do hangáru a laboratoří podle kódu
+     * @param src kód zadaný hráčem
+     * @param hangar hangár s kódem
+     * @param laboratory laboratoř
+     * @return info o správnosti
+     */
     public String hangarDoor(Scanner src, Hangar hangar, Room laboratory) {
         if(src.hasNextInt()) {
             int code = src.nextInt();

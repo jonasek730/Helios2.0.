@@ -3,6 +3,9 @@ package Class;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Třída objektu room parametry
+ */
 public class Room {
     private String name;
     private String description;
@@ -43,11 +46,6 @@ public class Room {
     public List<Room> getAround() {
         return around;
     }
-
-    public void setAround(List<Room> around) {
-        this.around = around;
-    }
-
     public List<String> getPersons() {
         return persons;
     }
@@ -63,19 +61,9 @@ public class Room {
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
-
-    public List<String> getItemsNames() {
-        return itemsNames;
-    }
-
-    public void setItemsNames(List<String> itemsNames) {
-        this.itemsNames = itemsNames;
-    }
-
     public List<Item> getItems() {
         return items;
     }
-
     public void setItems(List<Item> items) {
         this.items = items;
     }

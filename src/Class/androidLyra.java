@@ -3,6 +3,9 @@ package Class;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Třída slouží k vytvoření objektu androidLyra
+ */
 public class androidLyra extends Player {
     private String dialogue;
     private String dialogue1;
@@ -41,4 +44,5 @@ public class androidLyra extends Player {
     public void setDialogue1more(String dialogue1more) {
         this.dialogue1more = dialogue1more;
     }
+
 }

@@ -7,11 +7,16 @@ import java.util.Scanner;
 
 import static Class.UserInterface.helpInfo;
 
+    /**
+     * Třída starající se o správný průběh hry
+     */
     public class GameEngine {
     private boolean playing;
         private Player player;
 
-
+        /**
+         * Metoda tvořící posloupnost a logiku hry
+         */
 
    public void start(){
        UserInterface.introduction();
@@ -54,7 +59,9 @@ import static Class.UserInterface.helpInfo;
    }
     public String isWin(){return "Vyhrál jsi";}
 
-
+        /**
+         * Pomocná metoda pro výpis aktuální místnosti
+         */
    private void printCurrentRoomInfo() {
             System.out.println("\nAktuální místnost: " + player.getActualRoom().getName());
             System.out.println("Popis: " + player.getActualRoom().getDescription());
@@ -63,14 +70,11 @@ import static Class.UserInterface.helpInfo;
             }
         }
 
-
-
-
-
+        /**
+         * Metoda přidává pro každý command heslo pro spuštění
+         */
         private Map<String, Command> commands = new HashMap<>();
-    public GameEngine(){
-
-    }
+    public GameEngine(){}
         private void initCommands(Player p,UserInterface ui,DataLoader dl) {
             commands.put("jdi", new MoveCommand(p));
             commands.put("hledej", new DiscoverCommand(p));
@@ -81,6 +85,10 @@ import static Class.UserInterface.helpInfo;
             commands.put("mapa", new MapCommand(p));
     }
 
+        /**
+         * metoda rozděluje příkaz načtený od hráče a stará se o správné zpracování příkazu
+         * @param input zadaný příkaz
+         */
         public void instructions(String input){
             String[] parts = input.trim().split(" ", 2);
 
