@@ -25,8 +25,8 @@ import static Class.UserInterface.helpInfo;
        DataLoader dl =new DataLoader();
        dl.linkRooms(rooms);
        player = new Player("hrac",rooms.get(0),100);
-       initCommands(player,new UserInterface(), loader);
        Scanner scr = new Scanner(System.in);
+       initCommands(player,new UserInterface(), loader, scr);
        boolean running = true;
 
 
@@ -52,8 +52,13 @@ import static Class.UserInterface.helpInfo;
                System.out.println("Čas vypršel, loď se rozpadla. Prohrál jsi.");
                running = false;
            }
-           if ("Hangár".equals(player.getActualRoom().getName())||player.hasItem("energetický článek")&&player.hasItem("klíčky od modulu")&&player.hasItem("Datové nosiče")){
-               System.out.println("Gratuluji vyhrál jsi.");
+           boolean hasWinningItems = player.hasItem("energetický článek")
+                   && player.hasItem("klíčky od modulu")
+                   && player.hasItem("Datové nosiče");
+           if ("Hangár".equals(player.getActualRoom().getName()) && hasWinningItems){
+               System.out.println("Gratuluji, vyhrál jsi.");
+               running = false;
+
            }
        }
    }
@@ -75,10 +80,10 @@ import static Class.UserInterface.helpInfo;
          */
         private Map<String, Command> commands = new HashMap<>();
     public GameEngine(){}
-        private void initCommands(Player p,UserInterface ui,DataLoader dl) {
+        private void initCommands(Player p,UserInterface ui,DataLoader dl,Scanner scanner) {
             commands.put("jdi", new MoveCommand(p));
-            commands.put("hledej", new DiscoverCommand(p));
-            commands.put("mluv", new TalkCommand(ui, dl, p));
+            commands.put("hledej", new DiscoverCommand(p,scanner));
+            commands.put("mluv", new TalkCommand(ui, dl, p,scanner));
             commands.put("cas", new TimeCommand(p));
             commands.put("napoveda", new HintCommand());
             commands.put("inventar", new InventoryCommand(p));

@@ -1,14 +1,19 @@
 package Commands;
 import Class.*;
+
+import java.util.Scanner;
+
 public class TalkCommand implements Command {
 private UserInterface rozhrani;
 private DataLoader dataloader;
 private Player player;
+Scanner scanner;
 
-    public TalkCommand(UserInterface rozhrani,DataLoader dataloader,Player player) {
+    public TalkCommand(UserInterface rozhrani,DataLoader dataloader,Player player,Scanner scanner) {
         this.rozhrani = rozhrani;
         this.dataloader=dataloader;
         this.player=player;
+        this.scanner = scanner;
     }
 
     public String execute(String argument) {
@@ -23,20 +28,23 @@ private Player player;
                     return "Lyra teď nemá žádný předmět.";
                 } else {
                     Item reward = lyra.getInventory().get(0);
-                    rozhrani.dialogueLyra(lyra, player, reward);
+                    rozhrani.dialogueLyra(lyra, player, reward,scanner);
 
                 }
                 return "Konverzace ukončena.";
             }
             if (player.getActualRoom().getPersons().contains("robotAX")) {
-               rozhrani.dialogueAX(ax);
-                if (player.getActualRoom().getAround().get(2).isAvailable()) {
+               rozhrani.dialogueAX(ax,scanner);
+                Room destination = player.getAroundRoomByName("Hangár");
+                if (destination != null && destination.isAvailable()) {
                     ax.getEnding();
                     player.getActualRoom().getPersons().clear();
-                    player.getActualRoom().getAround().get(2).getPersons().add("robotAX");
+                    destination.getPersons().add("robotAX");
                 }
+            return "Konverzace ukončena";
             }
         }
+
         return null;
     }
 }

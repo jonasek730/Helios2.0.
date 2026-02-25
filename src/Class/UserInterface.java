@@ -15,13 +15,13 @@ public class UserInterface {
         }
 
 
-    Scanner src = new Scanner(System.in);
+
 
     /**
      * Metoda pro rozhovor s robotemAX
      * @param ax robot se kterým si hráč povídá
      */
-    public String dialogueAX(robotAX ax){
+    public String dialogueAX(robotAX ax,Scanner src){
             ax.getDialogue();
             try{
                 System.out.println("Možnosti:\n 1.Zjistit přístupový kód.\n 2.Co se děje s lodí?\n3.Odejít");
@@ -67,7 +67,7 @@ public class UserInterface {
      * @param item objekt který hráč dostane
      * @return
      */
-        public String dialogueLyra(androidLyra lyra, Player player, Item item){
+        public String dialogueLyra(androidLyra lyra, Player player, Item item, Scanner src){
             lyra.getDialogue();
             try {
             System.out.println("Možnosti:\n 1. Zjistit podrobnosti o místnosti \n 2. Odejít");

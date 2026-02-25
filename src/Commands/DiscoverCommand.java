@@ -7,9 +7,11 @@ import java.util.Scanner;
 
 public class DiscoverCommand implements Command {
     private Player player;
+     Scanner scanner;
 
-    public DiscoverCommand(Player player) {
+    public DiscoverCommand(Player player, Scanner scanner) {
         this.player=player;
+        this.scanner= scanner;
     }
 
     public String execute(String argument) {
@@ -19,9 +21,8 @@ public class DiscoverCommand implements Command {
             Room hangarRoom = player.getAroundRoomByName("Hangár");
             if (hangarRoom instanceof Hangar hangar && !hangar.isAvailable()) {
                 Room laboratory = getLaboratoryFromStorage();
-                Scanner src = new Scanner(System.in);
                 System.out.print("Zadej přístupový kód: ");
-                return player.hangarDoor(src, hangar, laboratory);
+                return player.hangarDoor(scanner, hangar, laboratory);
             }
         }
         if (roomItems.isEmpty()) {
