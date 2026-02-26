@@ -1,5 +1,5 @@
 package Commands;
-
+import Class.*;
 public class HelpCommand implements Command{
     private AI ai;
 

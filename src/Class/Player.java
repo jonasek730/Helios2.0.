@@ -12,8 +12,13 @@ public class Player {
    private String name;
     private Room actualRoom;
     private int Time;
+    private int task;
 
     public Player() {
+    }
+
+    public int getTask() {
+        return task;
     }
 
     public int getTime() {
@@ -33,6 +38,9 @@ public class Player {
         return inventory;
     }
 
+    public void setTask(int task) {
+        this.task = task;
+    }
 
     /**
      * metoda pro přidání itemu do inventáře
@@ -98,7 +106,7 @@ public class Player {
     public void checkInventory() {
         if (hasItem("Klíč od obytné místnosti")) {
             actualRoom.setAvailable(true);
-
+            setTask(1);
         }
     }
 
@@ -139,6 +147,7 @@ public class Player {
                 if (laboratory != null) {
                     laboratory.setAvailable(true);
                 }
+                task=2;
                 return "Kód byl správný, odemkly se dveře do Hangáru i Laboratoří.";
 
             }
@@ -148,4 +157,9 @@ public class Player {
             return "Zadal jsi špatný kód. Zkus se poptat o správný kód robota AX.";
 
     }
+    /**
+     * Metoda pro počítání pořadí tasků
+     */
+
+
 }

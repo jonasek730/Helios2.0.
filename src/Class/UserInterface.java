@@ -37,6 +37,7 @@ public class UserInterface {
                                 String choice3 = src.nextLine();
                                 if(ax.getCount().equals(choice3)) {
                                 ax.getAnswer();
+
                                 }
                                 else{
                                     System.out.println("Odpověd je špatná.");
@@ -83,6 +84,7 @@ public class UserInterface {
                             case "1":
                                 lyra.getDialogue1more();
                                 player.addInventory(item);
+                                player.setTask(3);
                                 System.out.println("Dostal jsi ochranný oblek");
                                 break;
                             case "2":
@@ -103,8 +105,23 @@ public class UserInterface {
 
             return null;
         }
-        public static void helpInfo(){
+
+    /**
+     * Lehká pomocná metoda původně jsem myslel že výpisy budu mít v 1 třídě.
+     */
+    public static void helpInfo(){
             System.out.println("Pro krátký soupis dostupných příkazů napiš: napoveda");
         }
-
+    public static void printCurrentTask(AI ai,Player player) {
+    switch (player.getTask()){
+        case 1:
+            System.out.println(ai.getName()+" : "+ai.getTaskHangar());
+            break;
+        case 2:
+            System.out.println(ai.getName()+" : "+ai.getTaskLaboratory());
+            break;
+        case 3:
+            System.out.println(ai.getName()+" : "+ai.getTaskEnd());
+    }
+    }
 }

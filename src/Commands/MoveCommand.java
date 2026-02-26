@@ -25,7 +25,7 @@ private Player player;
 
         if ("Energetické jádro".equalsIgnoreCase(destinationRoom.getName())
                 && !player.hasItem("ochranný oblek")) {
-            return "Do energetického jádra potřebuješ ochranný oblek.";
+            return "pro vstup do energetického jádra potřebuješ ochranný oblek.";
         }
             if ("Obytná sekce".equalsIgnoreCase(player.getActualRoom().getName())
                     && !player.hasItem("Klíč od obytné místnosti")) {

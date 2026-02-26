@@ -55,9 +55,27 @@ public class DataLoader {
         }
 
     }
+    /**
+     * Metoda která načítá objekt AI asistenta
+     * @return vrací objekt AI
+     */
+    public AI loadAI() {
+        JsonNode root = loadRootNode();
+        JsonNode aiNode = root.path("ai");
+
+        AI ai = new AI();
+        ai.setName(aiNode.path("name").asText("AI"));
+        ai.setTaskStart(aiNode.path("taskStart").asText(""));
+        ai.setTaskHangar(aiNode.path("taskHangar").asText(""));
+        ai.setTaskLaboratory(aiNode.path("taskLaboratory").asText(""));
+        ai.setTaskEnd(aiNode.path("taskEnd").asText(""));
+
+        return ai;
+    }
+
 
     /**
-     * Metoda pro každý objekt v Jsonu udělá objekt a přidá ho do mapy
+     * Metoda pro každý Item v Jsonu udělá objekt a přidá ho do mapy
      * @param root strom ze kterého čerpá
      * @return vrací mapu
      */

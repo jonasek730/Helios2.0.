@@ -113,6 +113,13 @@
       "dialogue": "Zdravím. Jsem Lyra, tvoje pomocnice v laboratoři. Jak ti mohu pomoci?",
       "dialogue1": "Laboratoř je bezpečná. Za dalšími dveřmi je energetické jádro, kam lze vstoupit jen s ochranným oblekem.",
       "dialogue1More": "Oblek ti mohu dát. Přeji hodně štěstí."
-    }
+    },
+  "AI": {
+    "name" : "Orion",
+    "taskStart": "Najdi klíč od Obytné místnosti a porozhlédni se kolem lodi",
+    "taskHangar": "Zjisti kód od dveří do Hangáru a Laboratoří ",
+    "taskLaboratory": "Porozhlédni se po Laboratořích a seznam se s androidem Lyrou",
+    "taskEnd": "Sestav rozbitý modul ze součástek: Energetické jádro, Klíčky od modulu a Datových nosičů"
+  }
   }
 

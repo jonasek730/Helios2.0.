@@ -6,13 +6,14 @@ import java.util.Map;
 import java.util.Scanner;
 
 import static Class.UserInterface.helpInfo;
+import static Class.UserInterface.printCurrentTask;
 
     /**
      * Třída starající se o správný průběh hry
      */
     public class GameEngine {
-    private boolean playing;
         private Player player;
+
 
         /**
          * Metoda tvořící posloupnost a logiku hry
@@ -22,18 +23,19 @@ import static Class.UserInterface.helpInfo;
        UserInterface.introduction();
        DataLoader loader = new DataLoader();
        List<Room> rooms = loader.loadRoomsData();
-       DataLoader dl =new DataLoader();
-       dl.linkRooms(rooms);
+       loader.linkRooms(rooms);
        player = new Player("hrac",rooms.get(0),100);
        Scanner scr = new Scanner(System.in);
        initCommands(player,new UserInterface(), loader, scr);
        boolean running = true;
+       loader.loadAI().getTaskStart();
 
 
        while (running) {
            helpInfo();
            System.out.print("> ");
 
+           int currentTask = player.getTask();
            String input = scr.nextLine();
 
            if (input.equalsIgnoreCase("exit")) {
@@ -43,11 +45,6 @@ import static Class.UserInterface.helpInfo;
 
                instructions(input);
            }
-
-
-
-
-
            if (player.getTime() <= 0) {
                System.out.println("Čas vypršel, loď se rozpadla. Prohrál jsi.");
                running = false;
@@ -60,10 +57,11 @@ import static Class.UserInterface.helpInfo;
                running = false;
 
            }
+           if(currentTask!= player.getTask()){
+               printCurrentTask(loader.loadAI(), player);
+           }
        }
    }
-    public String isWin(){return "Vyhrál jsi";}
-
         /**
          * Pomocná metoda pro výpis aktuální místnosti
          */
@@ -120,4 +118,4 @@ import static Class.UserInterface.helpInfo;
         }
 
 
-}
+    }
