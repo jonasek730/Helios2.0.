@@ -112,16 +112,6 @@ public class UserInterface {
     public static void helpInfo(){
             System.out.println("Pro krátký soupis dostupných příkazů napiš: napoveda");
         }
-    public static void printCurrentTask(AI ai,Player player) {
-    switch (player.getTask()){
-        case 1:
-            System.out.println(ai.getName()+" : "+ai.getTaskHangar());
-            break;
-        case 2:
-            System.out.println(ai.getName()+" : "+ai.getTaskLaboratory());
-            break;
-        case 3:
-            System.out.println(ai.getName()+" : "+ai.getTaskEnd());
+
     }
-    }
-}
+

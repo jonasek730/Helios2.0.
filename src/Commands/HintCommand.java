@@ -11,7 +11,7 @@ public class HintCommand implements Command{
                 + "- inventar\n"
                 + "- mluv <postava>\n"
                 + "- cas\n"
-                + "- uloz\n"
+                + "-pomoc\n"
                 + "- exit";
     }
 

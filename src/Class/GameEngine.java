@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 import static Class.UserInterface.helpInfo;
-import static Class.UserInterface.printCurrentTask;
 
     /**
      * Třída starající se o správný průběh hry
@@ -26,10 +25,9 @@ import static Class.UserInterface.printCurrentTask;
        loader.linkRooms(rooms);
        player = new Player("hrac",rooms.get(0),100);
        Scanner scr = new Scanner(System.in);
+       AI ai = loader.loadAI();
        initCommands(player,new UserInterface(), loader, scr);
        boolean running = true;
-       loader.loadAI().getTaskStart();
-
 
        while (running) {
            helpInfo();
@@ -57,9 +55,6 @@ import static Class.UserInterface.printCurrentTask;
                running = false;
 
            }
-           if(currentTask!= player.getTask()){
-               printCurrentTask(loader.loadAI(), player);
-           }
        }
    }
         /**
@@ -86,6 +81,7 @@ import static Class.UserInterface.printCurrentTask;
             commands.put("napoveda", new HintCommand());
             commands.put("inventar", new InventoryCommand(p));
             commands.put("mapa", new MapCommand(p));
+            commands.put("pomoc",new HelpCommand(p, dl.loadAI()));
     }
 
         /**

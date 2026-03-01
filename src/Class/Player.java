@@ -12,7 +12,7 @@ public class Player {
    private String name;
     private Room actualRoom;
     private int Time;
-    private int task;
+    private int task=0;
 
     public Player() {
     }
