@@ -24,20 +24,19 @@ Scanner scanner;
         } else {
             if (player.getActualRoom().getPersons().contains("android Lyra")) {
 
-                if (lyra.getInventory().isEmpty()) {
-                    return "Lyra teď nemá žádný předmět.";
-                } else {
-                    Item reward = lyra.getInventory().get(0);
-                    rozhrani.dialogueLyra(lyra, player, reward,scanner);
 
-                }
+                    Item reward = lyra.getInventory().get(0);
+                    lyra.getInventory().clear();
+                    rozhrani.dialogueLyra(lyra, player, reward,scanner);
+                    player.getActualRoom().getPersons().clear();
+
                 return "Konverzace ukončena.";
             }
             if (player.getActualRoom().getPersons().contains("robotAX")) {
                rozhrani.dialogueAX(ax,scanner);
                 Room destination = player.getAroundRoomByName("Hangár");
                 if (destination != null && destination.isAvailable()) {
-                    ax.getEnding();
+                    System.out.println(ax.getEnding());
                     player.getActualRoom().getPersons().clear();
                     destination.getPersons().add("robotAX");
                 }

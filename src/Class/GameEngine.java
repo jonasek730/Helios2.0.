@@ -25,7 +25,6 @@ import static Class.UserInterface.helpInfo;
        loader.linkRooms(rooms);
        player = new Player("hrac",rooms.get(0),100);
        Scanner scr = new Scanner(System.in);
-       AI ai = loader.loadAI();
        initCommands(player,new UserInterface(), loader, scr);
        boolean running = true;
 
@@ -33,7 +32,7 @@ import static Class.UserInterface.helpInfo;
            helpInfo();
            System.out.print("> ");
 
-           int currentTask = player.getTask();
+
            String input = scr.nextLine();
 
            if (input.equalsIgnoreCase("exit")) {

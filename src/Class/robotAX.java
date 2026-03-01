@@ -33,4 +33,32 @@ private String ending;
     public String getEnding() {
         return ending;
     }
+
+    public void setDialogue(String dialogue) {
+        this.dialogue = dialogue;
+    }
+
+    public void setDialogue1(String dialogue1) {
+        this.dialogue1 = dialogue1;
+    }
+
+    public void setDialogue1question(String dialogue1question) {
+        this.dialogue1question = dialogue1question;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public void setDialogue2(String dialogue2) {
+        this.dialogue2 = dialogue2;
+    }
+
+    public void setEnding(String ending) {
+        this.ending = ending;
+    }
 }

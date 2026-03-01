@@ -21,46 +21,54 @@ public class UserInterface {
      * Metoda pro rozhovor s robotemAX
      * @param ax robot se kterým si hráč povídá
      */
-    public String dialogueAX(robotAX ax,Scanner src){
-            ax.getDialogue();
-            try{
-                System.out.println("Možnosti:\n 1.Zjistit přístupový kód.\n 2.Co se děje s lodí?\n3.Odejít");
-                String choice= src.nextLine();
-                switch (choice){
-                    case "1":
-                        ax.getDialogue1();
-                        System.out.println("Možnosti:\n 1.Ano \n 2.Ne \nZadej číslo volby.");
-                        String choice2= src.nextLine();
-                        switch (choice2){
-                            case "1":
-                                ax.getDialogue1question();
-                                String choice3 = src.nextLine();
-                                if(ax.getCount().equals(choice3)) {
-                                ax.getAnswer();
+    public String dialogueAX(robotAX ax, Scanner src) {
 
-                                }
-                                else{
-                                    System.out.println("Odpověd je špatná.");
-                                }
-                                break;
-                            case "2":return choice;
-                            default:  System.out.println("Neznámý příkaz.");
-                            return choice;
+        System.out.println(ax.getDialogue());
+
+        System.out.println("Možnosti:\n1. Zjistit přístupový kód\n2. Co se děje s lodí?\n3. Odejít");
+        String choice = src.nextLine();
+
+        switch (choice) {
+
+            case "1":
+                System.out.println(ax.getDialogue1());
+                System.out.println("Možnosti:\n1. Ano\n2. Ne\nZadej číslo volby.");
+                String choice2 = src.nextLine();
+
+                switch (choice2) {
+
+                    case "1":
+                        System.out.println(ax.getDialogue1question());
+                        String choice3 = src.nextLine();
+
+                        if (ax.getCount().equals(choice3)) {
+                            System.out.println(ax.getAnswer());
+                        } else {
+                            System.out.println("Odpověď je špatná.");
                         }
-                    case"2":
-                        ax.getDialogue2();
-                        return choice;
-                    case "3":
-                        return choice;
+                        break;
+
+                    case "2":
+                        return "exit";
+
                     default:
                         System.out.println("Neznámý příkaz.");
                 }
-            } catch (RuntimeException e) {
-                throw new RuntimeException(e);
-            }
-            return null;
+                break;
+
+            case "2":
+                System.out.println(ax.getDialogue2());
+                break;
+
+            case "3":
+                return "exit";
+
+            default:
+                System.out.println("Neznámý příkaz.");
         }
 
+        return "continue";
+    }
     /**
      * Metoda pro rozhovor s androidLyra
      * @param lyra objekt se kterym si hrac povida
@@ -68,43 +76,49 @@ public class UserInterface {
      * @param item objekt který hráč dostane
      * @return
      */
-        public String dialogueLyra(androidLyra lyra, Player player, Item item, Scanner src){
-            lyra.getDialogue();
-            try {
-            System.out.println("Možnosti:\n 1. Zjistit podrobnosti o místnosti \n 2. Odejít");
-                String choice = src.nextLine();
+    public String dialogueLyra(androidLyra lyra, Player player, Item item, Scanner src) {
 
-                switch (choice) {
-                case "1":
-                        lyra.getDialogue1();
-                        System.out.println("Možnosti: \n 1. Potřebuji oblek \n 2. odejít");
-                    String subChoice = src.nextLine();
+        System.out.println(lyra.getDialogue());
+        System.out.println("Možnosti:\n1. Zjistit podrobnosti o místnosti\n2. Odejít");
 
-                    switch (subChoice) {
-                            case "1":
-                                lyra.getDialogue1more();
-                                player.addInventory(item);
-                                player.setTask(3);
-                                System.out.println("Dostal jsi ochranný oblek");
-                                break;
-                            case "2":
-                                return choice;
-                            default:
-                                System.out.println("Neznámý příkaz.");
-                                return choice;
-                        }
+        String choice = src.nextLine();
+
+        switch (choice) {
+
+            case "1":
+                System.out.println(lyra.getDialogue1());
+                System.out.println("Možnosti:\n1. Potřebuji oblek\n2. Odejít");
+
+                String subChoice = src.nextLine();
+
+                switch (subChoice) {
+
+                    case "1":
+                        System.out.println(lyra.getDialogue1more());
+                        player.addInventory(item);
+                        player.setTask(3);
+                        System.out.println("Dostal jsi ochranný oblek");
                         break;
+
                     case "2":
-                        return choice;
+                        return "back";
+
                     default:
                         System.out.println("Neznámý příkaz.");
+                        return "continue";
                 }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+                break;
 
-            return null;
+            case "2":
+                return "exit";
+
+            default:
+                System.out.println("Neznámý příkaz.");
+                return "continue";
         }
+
+        return "continue";
+    }
 
     /**
      * Lehká pomocná metoda původně jsem myslel že výpisy budu mít v 1 třídě.

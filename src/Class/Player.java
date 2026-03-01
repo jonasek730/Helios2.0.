@@ -157,9 +157,4 @@ public class Player {
             return "Zadal jsi špatný kód. Zkus se poptat o správný kód robota AX.";
 
     }
-    /**
-     * Metoda pro počítání pořadí tasků
-     */
-
-
 }

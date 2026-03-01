@@ -61,7 +61,7 @@ public class DataLoader {
      */
     public AI loadAI() {
         JsonNode root = loadRootNode();
-        JsonNode aiNode = root.path("ai");
+        JsonNode aiNode = root.path("AI");
 
         AI ai = new AI();
         ai.setName(aiNode.path("name").asText("AI"));
@@ -211,10 +211,16 @@ public class DataLoader {
     public robotAX loadRobotAX() {
         JsonNode root = loadRootNode();
         JsonNode axNode = root.path("robotAX");
-
-
         robotAX ax = new robotAX();
         ax.setName(axNode.path("name").asText("AX-3"));
+        ax.setDialogue(axNode.path("dialogue").asText(""));
+        ax.setDialogue1(axNode.path("dialogue1").asText(""));
+        ax.setDialogue1question(axNode.path("dialogue1question").asText(""));
+        ax.setCount(axNode.path("count").asText(""));
+        ax.setAnswer(axNode.path("answer").asText(""));
+        ax.setDialogue2(axNode.path("dialogue2").asText(""));
+        ax.setEnding(axNode.path("ending").asText(""));
+
         return ax;
     }
 
