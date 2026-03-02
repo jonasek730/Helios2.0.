@@ -3,6 +3,9 @@ import Class.*;
 
 import java.util.stream.Collectors;
 
+/**
+ * metoda pro command inventar
+ */
 public class InventoryCommand implements Command {
 private Player player;
 public InventoryCommand(Player player){

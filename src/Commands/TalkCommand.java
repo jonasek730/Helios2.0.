@@ -9,6 +9,13 @@ private DataLoader dataloader;
 private Player player;
 Scanner scanner;
 
+    /**
+     * Metoda pro command rozhovoru a kontrolu zda je nekdo v místnosti
+     * @param rozhrani pro načtení přesných metod rozhovoru
+     * @param dataloader pro načtení postav a jejich dialogů
+     * @param player pro hráče aby mohl obdržet předmět
+     * @param scanner
+     */
     public TalkCommand(UserInterface rozhrani,DataLoader dataloader,Player player,Scanner scanner) {
         this.rozhrani = rozhrani;
         this.dataloader=dataloader;

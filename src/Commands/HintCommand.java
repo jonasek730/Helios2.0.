@@ -1,5 +1,8 @@
 package Commands;
 
+/**
+ * metoda pro command napoveda
+ */
 public class HintCommand implements Command{
 
 

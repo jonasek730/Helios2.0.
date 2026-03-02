@@ -3,6 +3,9 @@ import Class.*;
 
 import java.util.stream.Collectors;
 
+/**
+ * metoda pro command mapa
+ */
 public class MapCommand implements Command {
 private Player player;
     public MapCommand(Player player) {

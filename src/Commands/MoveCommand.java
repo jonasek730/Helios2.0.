@@ -3,6 +3,10 @@ import Class.*;
 public class MoveCommand implements Command {
 private Player player;
 
+    /**
+     * metoda pro pohyb hráče a kontrolu zda jsou místnosti odemčené
+     * @param player
+     */
     public MoveCommand(Player player) {
         this.player = player;
     }

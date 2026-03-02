@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Command pro hledání předmětů v místnostech
+ */
 public class DiscoverCommand implements Command {
     private Player player;
      Scanner scanner;
@@ -45,6 +48,11 @@ public class DiscoverCommand implements Command {
         player.checkInventory();
         return "Našel jsi: " + String.join(", ", picked);
     }
+
+    /**
+     * Pomocná metoda pro vyhledání místnosti laboratoře
+     * @return laboratoř pro otevření
+     */
     private Room getLaboratoryFromStorage() {
         Room controlBridge = player.getAroundRoomByName("Řídicí můstek");
         if (controlBridge == null) {

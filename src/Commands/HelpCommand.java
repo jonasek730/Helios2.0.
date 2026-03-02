@@ -4,6 +4,11 @@ public class HelpCommand implements Command{
    private Player player;
    private AI ai;
 
+    /**
+     * metoda pro command pomoc
+     * @param player počítání na jaké je hráč úrovni
+     * @param ai potřeba pro výpis načtených úkolů
+     */
     public HelpCommand(Player player, AI ai) {
         this.player = player;
         this.ai=ai;
